@@ -9,7 +9,7 @@ struct rmq {
 	const static int N = 1e5+5, D = 20;
 	int l[N][D];
 
-	void build(int n, int* a) {
+	void build(int* a, int n) {
 		for(int i = 0; i < n; ++i)
 			l[i][0] = a[i];
 		for(int k = 1, p = 1; k < D; ++k, p*=2)
@@ -30,7 +30,7 @@ rmq r;
 
 int main() {
 	int a[5] = {4,7,3,9,1};
-	r.build(5,a);
+	r.build(a,5);
 	cout << r.query(1,3) << endl;
 	//output: 3
 	return 0;

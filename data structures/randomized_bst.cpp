@@ -1,19 +1,5 @@
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-#include <cstdio>
-#include <random>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <queue>
-#include <set>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
-typedef pair<int,int> pii;
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef long long ll;
 
 const int N = 3e5+5,INF = 0x7fffffff;
 int n,l,r;
@@ -38,8 +24,8 @@ void rbst_update(node *d) {
 	d->sz = 1+rbst_size(d->l)+rbst_size(d->r);
 }
 
-// l contains elements w/ value < v
-// r contains elements w/ value >= v
+// l will contain elements w/ values [-INF, v)
+// r wil contain elements w/ value >= v
 void rbst_split(node *d, int v, node *&l, node *&r) {
 	l = r = 0;
 	if(!d) return;
