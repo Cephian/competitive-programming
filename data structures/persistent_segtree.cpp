@@ -4,7 +4,6 @@
 using namespace std;
 
 /* persistent segment tree w/ sum query */
-
 struct per_seg {
 	vector<int> lc,rc,lx,rx,val,roots = {0};
 

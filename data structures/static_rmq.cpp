@@ -5,9 +5,8 @@ using namespace std;
 
 // O(n log n) space, O(1) query RMQ
 struct rmq {
-	// N is max array length, D should be greater than log(N)
-	const static int N = 1e5+5, D = 20;
-	int l[N][D];
+	const static int MAXN = 1e5+5, LOGN = 20;
+	int l[MAXN][LOGN];
 
 	void build(int* a, int n) {
 		for(int i = 0; i < n; ++i)
