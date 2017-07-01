@@ -14,11 +14,8 @@ struct wavelet{
 	vector<node> t;
 	 
 	int leq_cmp(T x) {
-		int lo = 0, hi = c.size();
-		while(hi-lo>1) {
-			int md = (lo+hi)>>1;
-			((c[md]<=x)?lo:hi) = md;
-		}
+		int lo = 0, hi = c.size(),md;
+		while(hi-lo!=1) md = (lo+hi)>>1,((c[md]<=x)?lo:hi) = md;
 		return lo;
 	}
 
