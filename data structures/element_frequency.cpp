@@ -12,7 +12,7 @@ struct elem_freq {
 		}
 	}
 
-	// finds the number of x's in [l,r]
+	// finds the number of x's in [l,r] in O(log n)
 	int in_range(T x, int l, int r) {
 		if(r-l < 50) {
 			int a=0;

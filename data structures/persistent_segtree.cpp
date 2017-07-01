@@ -57,13 +57,13 @@ struct per_seg {
 	}
 
 	//sum from i to j after t updates
-	int query(int t, int i, int j) {
+	int query(int i, int j, int t) {
 		return q(roots[t],i,j);
 	}
 
-	//add a to position i
-	void update(int i, int a) {
-		roots.push_back(u(roots.back(),i,a));
+	//add a to position i at time t
+	void update(int i, int a, int t) {
+		roots.push_back(u(roots[t],i,a));
 	}
 };
  

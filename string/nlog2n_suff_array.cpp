@@ -37,16 +37,16 @@ int lcp[N],inv[N];
 void kasai() {
 	int k = 0;
 	for (int i = 0; i < n; ++i)
-		suff_arr[inv[i]] = i;
+		inv[suff_arr[i]] = i;
 	for (int i = 0; i < n; ++i) {
-		if(inv[i] == n-1) {
+		if(suff_arr[i] == n-1) {
 			k = 0;
 			continue;
 		}
-		int j = inv[suff_arr[i]+1];
+		int j = suff_arr[inv[i]+1];
 		while(i+k<n && j+k<n && s[i+k]==s[j+k])
 			++k;
-		lcp[suff_arr[i]] = k;
+		suff_arr[inv[i]] = k;
 		k -= k > 0;
 	}
 }

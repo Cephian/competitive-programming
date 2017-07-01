@@ -1,90 +1,95 @@
-#include <iostream>
-#include <iomanip>
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 
-inline void read(int &a) {
-	bool s = false;
-	a = 0;
-	while(char c = getchar_unlocked()) {
-		if(c==' ' || c=='\n') {
-			if(s) return;
-		} else {
-			s = true;
-			a = (a<<3)+(a<<1)+c-'0';
-		}
+struct _ {
+	static constexpr double d10 = (double)1/10;
+	static constexpr long double ld10 = (long double)1/10;
+	static constexpr int precision = 12;
+	static char buff[22];
+	inline const _ &operator>> (int &a) const {
+		bool neg = 0;
+		char c = getchar_unlocked();
+		a = 0;
+		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
+		if(c=='-') neg=1,c=getchar_unlocked();
+		while('0'<=c&&c<='9') a=(a<<3)+(a<<1)+c-'0',c=getchar_unlocked();
+		if(neg) a = -a;
+		return *this;
 	}
-}
-
-inline void read(ll &a) {
-	bool s = false;
-	a = 0;
-	while(char c = getchar_unlocked()) {
-		if(c==' ' || c=='\n') {
-			if(s) return;
-		} else {
-			s = true;
-			a = (a<<3)+(a<<1)+c-'0';
-		}
+	inline const _ &operator>> (long long &a) const {
+		bool neg = 0;
+		char c = getchar_unlocked();
+		a = 0;
+		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
+		if(c=='-') neg=1,c=getchar_unlocked();
+		while('0'<=c&&c<='9') a=(a<<3)+(a<<1)+c-'0',c=getchar_unlocked();
+		if(neg) a = -a;
+		return *this;
 	}
-}
-
-inline void read(string &a) {
-	bool s = false;
-	a = "";
-	while(char c = getchar_unlocked()) {
-		if(c==' ' || c=='\n') {
-			if(s) return;
-		} else {
-			s = true;
-			a += c;
+	inline const _ &operator>> (double &a) const {
+		bool neg = 0;
+		char c = getchar_unlocked();
+		a = 0;
+		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
+		if(c=='-') neg=1,c=getchar_unlocked();
+		while('0'<=c&&c<='9') a=a*10+c-'0',c=getchar_unlocked();
+		if(c=='.') {
+			double p = d10;
+			c = getchar_unlocked();
+			while('0'<=c&&c<='9') a+=p*(c-'0'),p*=d10,c=getchar_unlocked();
 		}
+		if(neg) a = -a;
+		return *this;
 	}
-}
-
-inline void read(double &a) {
-	bool s = false,dp = false;
-	a = 0;
-	double p = 1;
-	while(char c = getchar_unlocked()) {
-		if(c==' ' || c=='\n') {
-			if(s) return;
-		} else {
-			s=true;
-			if(c=='.') {
-				dp=true;
-			} else if(dp) {
-				a += (p*=0.1)*(c-'0');
-			} else {
-				a = a*10+c-'0';
-			} 
+	inline const _ &operator>> (long double &a) const {
+		bool neg = 0;
+		char c = getchar_unlocked();
+		a = 0;
+		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
+		if(c=='-') neg=1,c=getchar_unlocked();
+		while('0'<=c&&c<='9') a=a*10+c-'0',c=getchar_unlocked();
+		if(c=='.') {
+			long double p = d10;
+			c = getchar_unlocked();
+			while('0'<=c&&c<='9') a+=p*(c-'0'),p*=ld10,c=getchar_unlocked();
 		}
+		if(neg) a = -a;
+		return *this;
 	}
-}
-
-inline void read(long double &a) {
-	bool s = false,dp = false;
-	a = 0;
-	long double p = 1;
-	while(char c = getchar_unlocked()) {
-		if(c==' ' || c=='\n') {
-			if(s) return;
-		} else {
-			s=true;
-			if(c=='.') {
-				dp=true;
-			} else if(dp) {
-				a += (p*=0.1)*(c-'0');
-			} else {
-				a = a*10+c-'0';
-			} 
-		}
+	inline const _ &operator>> (string &a) const {
+		bool neg = 0;
+		char c = getchar_unlocked();
+		a.clear();
+		while(isspace(c)) c=getchar_unlocked();
+		while(!isspace(c)) a+=c,c=getchar_unlocked();
+		return *this;
 	}
-}
+	inline const _ &operator<< (int a) const {
+		if(a) return putchar_unlocked('0'),*this;
+		int d = 0;
+		bool neg = 0;
+		if(a < 0) neg=1,a=-a;
+		while(a) bf[d++]=a%10+'0',a/=10;
+		if(neg) putchar_unlocked('-');
+		while(d--) putchar_unlocked(buf[d]);
+		return *this;
+	}
+	inline const _ &operator<< (long long a) const {
+		if(a) return putchar_unlocked('0'),*this;
+		int d = 0;
+		bool neg = 0;
+		if(a < 0) neg=1,a=-a;
+		while(a) buf[d++]=a%10+'0',a/=10;
+		if(neg) putchar_unlocked('-');
+		while(d--) putchar_unlocked(buf[d]);
+		return *this;
+	}
+	inline const _&operator<<(double d) {
+		
+	}
 
-int main() {
-	double d;
-	read(d);
-	cout << setprecision(12) << fixed << d << endl;
-	return 0;
-}
+	inline const _ &operator<< (const string &a) const {
+		for(int i = 0; i < a.size(); ++i) putchar_unlocked(a[i]);
+		return *this;
+	}
+} io;

@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 3e5+5,INF = 0x7fffffff;
-int n,l,r;
+/*################### RBST START #####################*/
 
 struct node {
 	int p,v,sz=1,lz=0;
@@ -92,6 +91,8 @@ int rbst_index(node* d, int v) {
 	return 1+rbst_size(d->l)+rbst_index(d->r,v);
 }
 
+/*#################### RBST END ######################*/
+
 node* root;
 
 int main() {
@@ -101,7 +102,7 @@ int main() {
 	rbst_insert(root,9);
 	//tree is 2 3 5 9
 	node *a,*b;
-	rbst_split(root,a,b,4);
+	rbst_split(root,4,a,b);
 	b->lz += 1; //adjust lazy value
 	root = rbst_merge(a,b);
 	//tree is 2 3 6 10

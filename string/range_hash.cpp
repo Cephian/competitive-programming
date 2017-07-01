@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 //query polynomial hash of substring [l,r] of s
 struct str_hash {
 	vector<ll> h,bp;

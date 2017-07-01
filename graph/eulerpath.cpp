@@ -3,7 +3,7 @@
 
 // ----- DIGRAPH -----
 void dg_euler(int v, vi& path, vvi& G) {
-	if(G[v].size()) {
+	while(G[v].size()) {
 		int u = G[v].back();
 		G[v].pop_back();
 		dg_euler(u,path,G);
