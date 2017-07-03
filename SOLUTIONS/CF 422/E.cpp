@@ -2,20 +2,19 @@
 using namespace std;
 typedef long long ll;
 
-struct str_hash32 {
-	vector<int> h,b;
-	constexpr static int BASE = 37, MOD = 1e9+9;
-	str_hash32(const string& s):h(s.size()+1),b(s.size()+1,1) {
+struct str_hash {
+	vector<ll> h,b;
+	constexpr static ll B = 37;
+	str_hash(const string& s):h(s.size()+1),b(s.size()+1,1) {
 		for(int i = 0; i < s.size(); ++i) {
-			h[i+1] = (1LL*h[i]*BASE+s[i]-'a'+1)%MOD;
-			b[i+1] = (1LL*b[i]*BASE)%MOD;
+			h[i+1] = h[i]*B+s[i]-'a'+1;
+			b[i+1] = b[i]*B;
 		}
 	}
 
 	//inclusive range hash
-	int hash(int i, int j) {
-		int r = (h[j+1] - 1LL*h[i]*b[j-i+1])%MOD;
-		return (r<0)?r+MOD:r;
+	ll hash(int l, int r) {
+		return h[r+1] - h[l]*b[r-l+1];
 	}
 };
 
@@ -27,7 +26,7 @@ int main() {
 	int n,m,x;
 	string s,t;
 	cin >> n >> s >> m >> t >> x;
-	str_hash32 S(s),T(t);
+	str_hash S(s),T(t);
 	for(int i = 0; i <= n; ++i) {
 		for(int r = 0; r <= x; ++r) {
 			if(dp[i][r] == m) {
