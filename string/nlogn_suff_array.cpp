@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 struct suff_arr {
 	int n;
 	vector<int> A,I;

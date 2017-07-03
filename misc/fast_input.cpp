@@ -5,7 +5,7 @@ struct _ {
 	static constexpr double d10 = (double)1/10;
 	static constexpr long double ld10 = (long double)1/10;
 	static constexpr int precision = 12;
-	static char buff[22];
+	static char bf[22];
 	inline const _ &operator>> (int &a) const {
 		bool neg = 0;
 		char c = getchar_unlocked();
