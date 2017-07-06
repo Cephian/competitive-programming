@@ -5,21 +5,18 @@ using namespace std;
 
 // O(n log n) space, O(1) query RMQ
 struct rmq {
-	const static int MAXN = 1e5+5, LOGN = 20;
-	int l[MAXN][LOGN];
-
-	void build(int* a, int n) {
+	vector<vector<int> > t;
+	rmq(int* a, int n):t(32-__builtin_clz(n),vector<int>(n)) {
 		for(int i = 0; i < n; ++i)
-			l[i][0] = a[i];
-		for(int k = 1, p = 1; k < D; ++k, p*=2)
+			t[0][i] = a[i];
+		for(int k = 1, p = 1; k < t.size(); ++k, p<<=1)
 			for(int i = 0; i < n; ++i)
-				l[i][k] = (i+p<n)?min(l[i][k-1],l[i+p][k-1]):l[i][k-1];
+				t[k][i] = (i+p<n)?min(t[k-1][i],t[k-1][i+p]):t[k-1][i];
 	}
-
-	int query(int i, int j) {
-		int p=0;
-		for(;(2<<p) <= j-i+1; ++p);
-		return min(l[i][p],l[j-(1<<p)+1][p]);
+	//inclusive min query
+	inline int query(int l, int r) const {
+		int p = 31-__builtin_clz(r-l+1);
+		return min(t[p][l],t[p][r+1-(1<<p)]);
 	}
 };
 

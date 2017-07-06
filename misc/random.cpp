@@ -3,6 +3,11 @@
 #include <ext/pb_ds/detail/standard_policies.hpp>
 #include <ext/pb_ds/tree_policy.hpp> // Including tree_order_statistics_node_update
 
+//SPECIAL GNU
+__gcd(a, b) //GCD : do not use let a or b be 0
+__builtin_popcount(a) //number of 1 bits
+__builtin_clz(a) // count leading zeroes
+
 //ORDER STATISTIC TREE
 typedef tree<int, null_type, less<int>,
 	rb_tree_tag, tree_order_statistics_node_update> ordered_set;

@@ -23,7 +23,7 @@ struct range_leq {
 	}
 
 	// how many elements in [0,i] have value in (-INF,v] ?
-	inline int prefix_query(int i, T v) {
+	inline int prefix_query(int i, T v) const {
 		int ans = 0;
 		for(++i;i;i^=i&-i) {
 			int lo=-1,hi=fen[i].size();

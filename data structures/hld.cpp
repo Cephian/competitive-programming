@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 vvi T;
 
 // heavy-light decomposition for general range query structures
