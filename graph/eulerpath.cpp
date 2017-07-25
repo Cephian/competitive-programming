@@ -12,44 +12,42 @@ void dg_euler(int v, vi& path, vvi& G) {
 }
 
 // ----- UNDIRECTED GRAPH -----
-vi e1,e2;
-//remember to clear between runs
-bool used[100005] = {0};
+struct euler_path {
+	vi e1,e2;
+	vvi G;
+	vector<bool> used = {};
 
-void ud_euler(int v, vi& path, vvi& G) {
-	int i = -1;
-	do {
-		i = G[v].back();
-		G[v].pop_back();
+	euler_path(){}
+	euler_path(int N):G(N){}
+	euler_path(int N, int M):G(N){used.reserve(M);}
+
+	void get_path(vi& path, int v = 0) {
+		while(G[v].size()) {
+			int i = G[v].back();
+			G[v].pop_back();
+			if(used[i]) continue;
+			used[i] = 1;
+			int u = (v==e1[i])?e2[i]:e1[i];
+			get_path(path,u);
+		}
+		path.push_back(v);
 	}
-	while(G[v].size() && used[i]);
-	if(i != -1 && !used[i]) {
-		used[i]=1;
-		int u = (v==e1[i])?e2[i]:e1[i];
-		ud_euler(u,path,G);
+
+	inline void add_edge(int u, int v) {
+		G[u].push_back(e1.size()), G[v].push_back(e2.size());
+		e1.push_back(u), e2.push_back(v);
+		used.push_back(0);
 	}
-	path.push_back(v);
-}
+};
+
 
 // ----- USAGE -----
 vvi G;
 int main() {
-	//UNDIRECTED CASE
-	//EDGES FROM e1[i] <-> e2[i] 
-	//G STORES INDICES OF EDGES IN ADJ LIST
-	e1 = {0,2,1,2,0,4,4,4,4,5,5};
-	e2 = {1,0,3,1,3,0,1,2,3,2,3};
-	G = vvi(6,vi());
-	for(int i = 0; i < e1.size(); ++i) {
-		G[e1[i]].push_back(i);
-		G[e2[i]].push_back(i);
-	}
-
+	euler_path e(10);
+	// add edges
 	vi path;
-	ud_euler(0,path,G);
-	for(auto u : path)
-		cout << u << " ";
-	cout << endl;
+	e.get_path(path);
 
 	//DIRECTED CASE
 	G = {{2,3},{0},{1},{4},{0}};
