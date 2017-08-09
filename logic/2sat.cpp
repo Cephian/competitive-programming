@@ -75,5 +75,4 @@ int main() {
 	vector<bool> ans(3,0);
 	if(!S.solve(a,b,ans,3)) cout << "unsatisfiable\n";
 	else cout << ans[0] << " " << ans[1] << " " << ans[2] << "\n";
-	return 0;
 }

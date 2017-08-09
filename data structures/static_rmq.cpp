@@ -1,11 +1,7 @@
-#include <iostream>
-#include <algorithm>
-
-using namespace std;
-
 // O(n log n) space, O(1) query RMQ
 struct rmq {
 	vector<vector<int> > t;
+	rmq(){}
 	rmq(int* a, int n):t(32-__builtin_clz(n),vector<int>(n)) {
 		for(int i = 0; i < n; ++i)
 			t[0][i] = a[i];
@@ -19,15 +15,3 @@ struct rmq {
 		return min(t[p][l],t[p][r+1-(1<<p)]);
 	}
 };
-
-/* USAGE */
-
-rmq r;
-
-int main() {
-	int a[5] = {4,7,3,9,1};
-	r.build(a,5);
-	cout << r.query(1,3) << endl;
-	//output: 3
-	return 0;
-}

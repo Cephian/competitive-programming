@@ -36,7 +36,7 @@ int _dvm[7][7];
  
  
 void func(int x, int y, int z, int f[7][7]) {
-	int o = 2000, O = 2100,Oo=2200;
+	int o = 2000, O = 2100, Oo=2200;
 	for(int u = 0; u < p; ++u) {
 		cf(x,u,o+u);
 		cf(y,u,O+u);

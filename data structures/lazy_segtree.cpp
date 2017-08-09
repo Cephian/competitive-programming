@@ -8,25 +8,21 @@ void build_st(int v, int i, int j) {
 	//CHANGE ME
 	segt[v] = lazy[v] = 0;
 	if(i == j) return;
-	build_st(v*2,i,(i+j)/2);
-	build_st(v*2+1,(i+j)/2+1,j);
-}
-
-ll get_val(int v) {
-	//CHANGE ME
-	return segt[v]+lazy[v];
+	build_st(v<<1,i,(i+j)/2);
+	build_st(v<<1|1,(i+j)/2+1,j);
 }
 
 void prop(int v) {
 	//CHANGE ME
-	lazy[v*2]+=lazy[v];
-	lazy[v*2+1]+=lazy[v];
+	lazy[v<<1]+=lazy[v];
+	lazy[v<<1|1]+=lazy[v];
 	lazy[v]=0;
 }
 
 void recalc(int v) {
 	//CHANGE ME
-	segt[v] = max(get_val(v*2),get_val(v*2+1));
+	prop(v<<1,v<<1|1);
+	segt[v] = max(segt[v<<1],get_val(v<<1|1));
 }
 
 void update_st(int v, int i, int j, ll val) {
@@ -37,8 +33,8 @@ void update_st(int v, int i, int j, ll val) {
 		return;
 	}
 	prop(v);
-	update_st(v*2,i,j,val);
-	update_st(v*2+1,i,j,val);
+	update_st(v<<1,i,j,val);
+	update_st(v<<1|1,i,j,val);
 	recalc(v);
 }
 
@@ -47,12 +43,11 @@ ll query_st(int v, int i, int j) {
 		//CHANGE ME
 		return 0;
 	}
+	prop(v);
 	if(i <= l[v] && r[v] <= j) {
 		//CHANGE ME
 		return get_val(v);
 	}
-	prop(v);
-	recalc(v);
 	//CHANGE ME
 	return max(query_st(v*2,i,j),query_st(v*2+1,i,j));
 }

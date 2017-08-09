@@ -9,7 +9,7 @@ struct suff_arr {
 		rmq = vector<vector<int> >(lg(n)+1,vector<int>(n));
 		int k = 0,j;
 		for(int i = 0; i < n; ++i) {
-			if(I[i]==n-1) {
+			if(I[i] == n-1) {
 				k = 0;
 				continue;
 			}
@@ -53,7 +53,7 @@ struct suff_arr {
 
 	int lcp(int i, int j) const {
 		if(i == j) return n-i;
-		i=I[i],j=I[j];
+		i = I[i],j = I[j];
 		if(j<i) swap(i,j);	
 		int l = lg(j-i);
 		return min(rmq[l][i],rmq[l][j-(1<<l)]);

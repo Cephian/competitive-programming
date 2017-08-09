@@ -1,3 +1,43 @@
+//factorize integers in [0,N)
+int fact[N];
+void factor_all() {
+	for(int i = 1; i < N; ++i)
+		fact[i] = i;
+	for(int i = 2; i < N; ++i)
+		if(fact[i] == i)
+			for(ll j = ll(i)*i; j < N; j += i)
+				fact[j] = i;
+}
+
+//factored list of integers
+map<int,int> factor(int n) {
+	map<int,int> a;
+	while(n != 1) {
+		++a[fact[n]];
+		n/=fact[n];
+	}
+	return a;
+}
+
+//return list of divisors given factorization
+vector<int> divisors(const map<int,int>& f) {
+	int m = 1;
+	for(auto p : f)
+		m *= p.second+1;
+	vector<int> ans;
+	for(--m; m>=0; --m) {
+		int w=m,a=1;
+		for(auto p : f) {
+			int e = w%(p.second+1);
+			w/=p.second+1;
+			while(e--)
+				a*=p.first;
+		}
+		ans.push_back(a);
+	}
+	return ans;
+}
+
 //UNTESTED
 bool miller_rabin_primality(ll N) {
 	// deterministic for all <= 2 ^ 64
@@ -35,45 +75,4 @@ ll pollard_rho(ll N) {
 		if (d != 1 && d != N) break;
 	}
 	return d;
-}
-
-//factorize integers in [0,N)
-int fact[N];
-void factor_all() {
-	for(int i = 1; i < N; ++i)
-		fact[i] = i;
-	for(int i = 2; i < N; ++i)
-		if(fact[i] == i)
-			for(ll j = ll(i)*i; j < N; j += i)
-				fact[j] = i;
-}
-
-//factored list of integers
-map<int,int> factor(int n) {
-	map<int,int> a;
-	while(n != 1) {
-		++a[fact[n]];
-		n/=fact[n];
-	}
-	return a;
-}
-
-//return unsorted list of divisors given factorization
-//topologically ordered by poset digraph
-vector<int> divisors(map<int,int>& f) {
-	int m = 1;
-	for(auto p : f)
-		m *= p.second+1;
-	vector<int> ans;
-	for(--m; m>=0; --m) {
-		int w=m,a=1;
-		for(auto p : f) {
-			int e = w%(p.second+1);
-			w/=p.second+1;
-			while(e--)
-				a*=p.first;
-		}
-		ans.push_back(a);
-	}
-	return ans;
 }

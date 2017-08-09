@@ -9,7 +9,7 @@ struct str_hash {
 	}
 
 	//inclusive range hash
-	ll hash(int i, int j) {
+	ll hash(int i, int j) const {
 		return h[j+1] - h[i]*b[j-i+1];
 	}
 };

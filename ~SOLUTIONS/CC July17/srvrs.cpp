@@ -67,7 +67,6 @@ int main() {
 		while(Q.size() && Q.top().fi == t) {
 			pos[Q.top().se] = open.size();
 			open.pb(Q.top().se);
-			// cout << "at time " << t << " adding back " << id[Q.top().se].fi << " " << id[Q.top().se].se << "\n";
 			Q.pop();
 		}
 		printf("?\n"),fflush(stdout);
@@ -75,7 +74,6 @@ int main() {
 		scanf("%d%d",&x,&y);
 		int best = select_best(x,y);
 		swap_open(best,open.size()-1);
-		// cout << "at time " << t << " removing " << id[open.back()].fi << " " << id[open.back()].se << " to be back at " << v[]endl;
 		printf("! %d %d\n",id[open.back()].fi,id[open.back()].se),fflush(stdout);
 		Q.emplace(t+v[open.back()].p,open.back());
 		pos[open.back()] = -1;

@@ -8,7 +8,7 @@ struct per_seg {
 	vector<int> lc,rc,lx,rx,val,roots = {0};
 
 	//CHANGE ME
-	inline int combine(int a, int b) {
+	inline static int combine(int a, int b) {
 		return a+b;
 	}
 
@@ -57,7 +57,8 @@ struct per_seg {
 	}
 
 	//sum from i to j after t updates
-	int query(int i, int j, int t) {
+	int query(int i, int j, int t = -1) {
+		if(t == -1) t = roots.size()-1;
 		return q(roots[t],i,j);
 	}
 

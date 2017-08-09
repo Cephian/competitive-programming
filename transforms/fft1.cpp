@@ -1,3 +1,4 @@
+//FFT1 for less precise
 #include <bits/stdc++.h>
 using namespace std;
 
