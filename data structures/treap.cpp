@@ -37,10 +37,10 @@ namespace treap {
 		l = r = 0;
 		if(!d) return;
 		if(size(d->l) >= sz) {
-			split(d->l,sz,l,d->l);
+			split_size(d->l,sz,l,d->l);
 			r = d;
 		} else {
-			split(d->r,sz,d->r,r);
+			split_size(d->r,sz,d->r,r);
 			l = d;
 		}
 		recalc(d);
