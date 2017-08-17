@@ -1,95 +1,46 @@
-#include <bits/stdc++.h>
-using namespace std;
+#define gc() getchar_unlocked()
+#define pc(x) putchar_unlocked(x)
+inline void read(int& a) {
+	char c = gc();
+	while(c == ' ' || c == '\n') c = gc();
+	a = 0;
+	bool neg = c == '-';
+	if(c == neg) c = gc();
+	while('0' <= c && c <= '9') {
+		a = a*10 + c-'0';
+		c = gc();
+	}
+}
 
-struct _ {
-	static constexpr double d10 = (double)1/10;
-	static constexpr long double ld10 = (long double)1/10;
-	static constexpr int precision = 12;
-	static char bf[22];
-	inline const _ &operator>> (int &a) const {
-		bool neg = 0;
-		char c = getchar_unlocked();
-		a = 0;
-		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
-		if(c=='-') neg=1,c=getchar_unlocked();
-		while('0'<=c&&c<='9') a=(a<<3)+(a<<1)+c-'0',c=getchar_unlocked();
-		if(neg) a = -a;
-		return *this;
-	}
-	inline const _ &operator>> (long long &a) const {
-		bool neg = 0;
-		char c = getchar_unlocked();
-		a = 0;
-		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
-		if(c=='-') neg=1,c=getchar_unlocked();
-		while('0'<=c&&c<='9') a=(a<<3)+(a<<1)+c-'0',c=getchar_unlocked();
-		if(neg) a = -a;
-		return *this;
-	}
-	inline const _ &operator>> (double &a) const {
-		bool neg = 0;
-		char c = getchar_unlocked();
-		a = 0;
-		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
-		if(c=='-') neg=1,c=getchar_unlocked();
-		while('0'<=c&&c<='9') a=a*10+c-'0',c=getchar_unlocked();
-		if(c=='.') {
-			double p = d10;
-			c = getchar_unlocked();
-			while('0'<=c&&c<='9') a+=p*(c-'0'),p*=d10,c=getchar_unlocked();
+inline void read(string& s) {
+	static int bz = 100005;
+	static char *bf = new char[bz];
+	int z = 0;
+	char c = gc();
+	while(c == ' ' || c == '\n') c = gc();
+	while(c == ' ' || c == '\n') {
+		if(++z == bz) {
+			char *tmp = new char[2*bz];
+			copy(bf,bf+bz,tmp);
+			delete[] bf;
+			bf = tmp;
 		}
-		if(neg) a = -a;
-		return *this;
+		bf[z-1] = c;
+		c = gc();
 	}
-	inline const _ &operator>> (long double &a) const {
-		bool neg = 0;
-		char c = getchar_unlocked();
-		a = 0;
-		while(c!='-'&&('0'>c||c>'9')) c = getchar_unlocked();
-		if(c=='-') neg=1,c=getchar_unlocked();
-		while('0'<=c&&c<='9') a=a*10+c-'0',c=getchar_unlocked();
-		if(c=='.') {
-			long double p = d10;
-			c = getchar_unlocked();
-			while('0'<=c&&c<='9') a+=p*(c-'0'),p*=ld10,c=getchar_unlocked();
-		}
-		if(neg) a = -a;
-		return *this;
-	}
-	inline const _ &operator>> (string &a) const {
-		bool neg = 0;
-		char c = getchar_unlocked();
-		a.clear();
-		while(isspace(c)) c=getchar_unlocked();
-		while(!isspace(c)) a+=c,c=getchar_unlocked();
-		return *this;
-	}
-	inline const _ &operator<< (int a) const {
-		if(a) return putchar_unlocked('0'),*this;
-		int d = 0;
-		bool neg = 0;
-		if(a < 0) neg=1,a=-a;
-		while(a) bf[d++]=a%10+'0',a/=10;
-		if(neg) putchar_unlocked('-');
-		while(d--) putchar_unlocked(buf[d]);
-		return *this;
-	}
-	inline const _ &operator<< (long long a) const {
-		if(a) return putchar_unlocked('0'),*this;
-		int d = 0;
-		bool neg = 0;
-		if(a < 0) neg=1,a=-a;
-		while(a) buf[d++]=a%10+'0',a/=10;
-		if(neg) putchar_unlocked('-');
-		while(d--) putchar_unlocked(buf[d]);
-		return *this;
-	}
-	inline const _&operator<<(double d) {
-		
-	}
+	bf[z] = 0;
+	s = bf;
+}
 
-	inline const _ &operator<< (const string &a) const {
-		for(int i = 0; i < a.size(); ++i) putchar_unlocked(a[i]);
-		return *this;
-	}
-} io;
+
+inline void print(int a) {
+	char bf[10];
+	int n = 0;
+	if(a==0) bf[n++]='0';
+	else while(a) bf[n++] = '0'+a%10, a/=10;
+	while(n--) pc(bf[n]);
+}
+
+inline void print(const string &s) {
+	for(char c : s) pc(c);
+}

@@ -178,12 +178,9 @@ int sidePG(pt p, vector<pt> &g) {
 	return c*2-1;
 }
 
-
-
 bool intersectSL(pt a, pt b, pt c, pt d){
-	return cross(a-c,a-d) * cross(b-c,b-d) <=0;
+	return cross(a-c,a-d) * cross(b-c,b-d) <= 0;
 }
-
 
 vector<pt> intersectLC(pt a, pt b, pt c, ld r) {
 	vector<pt> ans;
@@ -255,7 +252,7 @@ bool cmp1(pt a, pt b){
 	return cross(a-POINT,b-POINT) > 0;
 }
 
-//Sort around POINT starting and ending from a line in the direction of LINE
+//Sort around POINT starting and ending from a line in the direction of DIR
 bool cmp2(pt a, pt b){
 	if(a==b) return false;
 	pt p = POINT;
