@@ -4,14 +4,15 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef long long ll;
 
-struct edge {
-	int u, v;
-	ll cap, flow;
-	edge() {}
-	edge(int u, int v, ll cap): u(u), v(v), cap(cap), flow(0) {}
-};
-
+template <class X>
 struct dinic {
+	struct edge {
+		int u, v;
+		X cap, flow;
+		edge() {}
+		edge(int u, int v, X cap): u(u), v(v), cap(cap), flow(0) {}
+	};
+
 	int N;
 	vector<edge> E;
 	vector<vector<int>> g;
@@ -19,7 +20,7 @@ struct dinic {
 
 	dinic(int N): N(N), E(0), g(N), d(N), pt(N) {}
 
-	void add_edge(int u, int v, ll cap) {
+	void add_edge(int u, int v, X cap) {
 		if (u == v) return;
 		g[u].emplace_back(E.size());
 		E.emplace_back(edge(u, v, cap));
@@ -46,15 +47,15 @@ struct dinic {
 		return d[T] != N + 1;
 	}
 
-	ll dfs(int u, int T, ll flow = -1) {
+	X dfs(int u, int T, X flow = -1) {
 		if(u == T || !flow) return flow;
 		for(int &i = pt[u]; i < g[u].size(); ++i) {
 			edge &e = E[g[u][i]];
 			edge &oe = E[g[u][i]^1];
 			if(d[e.v] == d[e.u] + 1) {
-				ll amt = e.cap - e.flow;
+				X amt = e.cap - e.flow;
 				if(flow != -1 && amt > flow) amt = flow;
-				if(ll pushed = dfs(e.v, T, amt)) {
+				if(X pushed = dfs(e.v, T, amt)) {
 					e.flow += pushed;
 					oe.flow -= pushed;
 					return pushed;
@@ -64,11 +65,12 @@ struct dinic {
 		return 0;
 	}
 
-	ll flow(int S, int T) {
-		ll tot = 0;
+	X flow(int S, int T) {
+		X tot = 0;
 		while(bfs(S, T)) {
+			// if using fp arithmetic, limit this to N passes explicitly
 			fill(pt.begin(), pt.end(), 0);
-			while(ll flow = dfs(S, T))
+			while(X flow = dfs(S, T))
 				tot += flow;
 		}
 		return tot;
