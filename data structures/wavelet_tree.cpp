@@ -1,9 +1,8 @@
 template <class T>
 struct wavelet{
-
 	struct node {
 		vector<int> b;
-		int lo,hi,md;
+		T lo,hi,md;
 	};
 	vector<node> t;
 
