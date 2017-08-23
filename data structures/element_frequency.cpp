@@ -14,10 +14,10 @@ struct elem_freq {
 
 	// finds the number of x's in [l,r] in O(log n)
 	inline int in_range(T x, int l, int r) const {
-		if(r-l < 50) {
-			int a=0;
+		if(r-l < 30) {
+			int a = 0;
 			for(int i = l; i <= r; ++i)
-				a+= v[i]==x;
+				a += v[i]==x;
 			return a;
 		}
 		if(!idx.count(x)) return 0;

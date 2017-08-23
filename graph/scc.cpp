@@ -1,51 +1,59 @@
-// construct graph G and call fill_scc
-// sz is the # of SCCs and scc[v] in {0,...,sz-1} is the SCC of v
-// sz-1,sz-2,...,1,0 is a topological ordering of the SCCs
+//find strongly connected components in a graph
+//scc ids are indexed topologically, e.g.  edge a -> b implies scc[a] <= scc[b]
+struct scc {
+	int sz=0; //the number of sccs
+	vector<int> id; //id[v] is the scc id of v
+	int N,ls=0;
+	vector<int> L;
+	vector<vector<int>> G,R;
 
-const int N = 1e5+5;
+	void init(int n) { N = n, G.resize(N), R.resize(N), id.resize(N), L.resize(N); }
 
-//set ls = sz = scc[v] = 0 between runs
-vvi G, R;
-int L[N], ls=0, scc[N]={0}, sz=0;
-void dfs1(int v) {
-	if(scc[v]) return;
-	scc[v] = 1;
-	for(auto u : G[v])
-		dfs1(u);
-	L[ls++] = v;
-}
+	scc(){}
+	scc(int n){init(n);}
 
-void dfs2(int v, int r) {
-	if(scc[v] != -1) return;
-	scc[v] = r;
-	for(auto u : R[v])
-		dfs2(u,r);
-}
-
-void fill_scc() {
-	int n = G.size();
-	R = vvi(n,vi());
-	for(int v = 0; v < n; ++v) {
-		dfs1(v);
-		for(int u : G[v])
-			R[u].push_back(v);
+	void dfs1(int v) {
+		if(id[v]) return;
+		id[v] = 1;
+		for(auto u : G[v])
+			dfs1(u);
+		L[ls++] = v;
 	}
-	fill(scc,scc+n,-1);
-	for(int i = n-1; i >= 0; --i) {
-		if(scc[L[i]] == -1)
-			dfs2(L[i],sz++);
-	}
-}
 
-//only implement if you need the digraph of SCCs
-//reverse index order |B|-1,|B|-2,...,2,1,0 is a topological ordering
-void scc_digraph(vvi& B) {
-	B = vvi(sz,vi());
-	for(int v = 0; v < G.size(); ++v) {
-		for(int u : G[v])
-			if(scc[v] != scc[u])
-				B[v].push_back(u);
-		sort(B[v].begin(),B[v].end());
-		B[v].erase(unique(B[v].begin(),B[v].end()),B[v].end());
+	void dfs2(int v, int r) {
+		if(~id[v]) return;
+		id[v] = r;
+		for(int u : R[v])
+			dfs2(u,r);
 	}
-}
+
+	void add_edge(int u, int v) {
+		G[u].push_back(v), R[v].push_back(u);
+	}
+
+	//calculate the strongly connected components
+	void calc() {
+		for(int v = 0; v < N; ++v)
+			dfs1(v);
+		fill(id.begin(),id.end(),-1);
+		for(int i = N-1; i >= 0; --i) {
+			if(id[L[i]] == -1)
+				dfs2(L[i],sz++);
+		}
+	}
+
+	//get the digraph of sccs, call AFTER calc
+	//remember that indices are ordered topologically
+	vector<vector<int>> scc_digraph() {
+		vector<vector<int>> B(N);
+		for(int u = 0; u < N; ++u)
+			for(int v : G[u])
+				if(id[u] != id[v])
+					B[id[u]].push_back(id[v]);
+		for(int i = 0; i < sz; ++i) {
+			sort(B[i].begin(),B[i].end());
+			B[i].erase(unique(B[i].begin(),B[i].end()),B[i].end());
+		}
+		return B;
+	}
+};

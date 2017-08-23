@@ -1,4 +1,5 @@
 //triangulate a polygon in O(n^2)
+
 bool same_side(point& a, point& b, point& u, point& v) {
 	return cross(b-a,u-a)>0 == cross(b-a,v-a)>0;
 }

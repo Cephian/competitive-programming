@@ -12,6 +12,10 @@ struct point {
 	bool operator < (const point &p) const { return (x==p.x) ? y<p.y : x<p.x; }
 };
 
+ostream& operator<<(ostream &o, const point &p) {
+	return o << "(" << p.x << "," << p.y << ")",o;
+}
+
 ld dot(point p, point q) { return p.x*q.x + p.y*q.y; }
 ld cross(point p, point q) { return p.x*q.y - p.y*q.x; }
 ld norm(point p) { return p.x*p.x + p.y*p.y; }

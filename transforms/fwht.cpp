@@ -1,4 +1,7 @@
 /* matrices for bit operations and their inverses (fast-walsh-hadamard)
+C_k = SUM over op(i,j) = k of A_i * B_i
+the following operations are supported:
+
 # XOR #
     |1  1|             |1  1|
 T = |1 -1| and 2T^-1 = |1 -1|

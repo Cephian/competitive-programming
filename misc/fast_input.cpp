@@ -1,5 +1,6 @@
 #define gc() getchar_unlocked()
 #define pc(x) putchar_unlocked(x)
+
 inline void read(int& a) {
 	char c = gc();
 	while(c == ' ' || c == '\n') c = gc();
@@ -34,7 +35,7 @@ inline void read(string& s) {
 
 
 inline void print(int a) {
-	char bf[10];
+	char bf[12];
 	int n = 0;
 	if(a==0) bf[n++]='0';
 	else while(a) bf[n++] = '0'+a%10, a/=10;

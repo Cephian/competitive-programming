@@ -35,10 +35,6 @@ namespace FFT {
 			return base(re,-im);
 		}
 	};
-	ostream& operator<<(ostream &o, const base& b) {
-		o << "(" << b.re << "," << b.im << ")";
-		return o; 
-	}
 
 	vector<int> rev;
 	vector<base> wlen_pw;

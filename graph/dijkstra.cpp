@@ -1,11 +1,11 @@
+template <class T> //weight type
 namespace ijk {
-	typedef int T; //CHANGE THIS TO CHANGE TYPE
 	typedef pair<T,int> edge;
 	typedef vector<vector<edge>> graph;
 	typedef priority_queue<edge,vector<edge>,greater<edge>> pq;
 	static const T INF = numeric_limits<T>::max();
 	graph G;
-	vector<T> d;
+	vector<T> d; //distances are stored here
 
 	void init(int n) {
 		G = graph(n);

@@ -1,45 +1,40 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+//find bridge edges in a connected graph
+struct find_bridge {
+	//will contain the bridges in (u,v) pairs
+	vector<pii> ans_edges;
+	//will contain the bridges in indices by insertion order
+	vector<int> ans_indices;
 
-using namespace std;
-typedef pair<int,int> pii;
-typedef vector<pii> vpii;
+	int c=0,ctr=0;
+	vector<vector<pii>> G;
+	vector<bool> vis;
+	vector<int> reach,lab;
+	void init(int n) {
+		G.resize(n);
+		vis.resize(n);
+		lab.resize(n);
+		reach.resize(n);
+	}
 
-const int N=100005;
-vpii G[N];
-bool vis[N]={0},is_bridge[N]={0};
-int lab[N],reach[N],ctr=0;
+	find_bridge(){}
+	find_bridge(int n){init(n);}
 
-void bridge(int f, int v) {
-	vis[v]=1;
-	reach[v]=lab[v]=ctr++;
-	for(int i = 0; i < G[v].size(); ++i) {
-		int u = G[v][i].first;
-		if(u==f) continue;
-		if(!vis[u]) {
-			bridge(v,u);
-			if(reach[u] > lab[v])
-				is_bridge[G[v][i].second]=true;
+	void add_edge(int u, int v) {
+		G[u].emplace_back(v,c);
+		G[v].emplace_back(u,c++);
+	}
+
+	//calculate answers and store in ans_edges and ans_indices
+	//ignore the return value
+	int calc(int f = -1, int v = 0) {
+		vis[v] = 1, reach[v] = lab[v] = ctr++;
+		for(auto &p : G[v]) {
+			int w = p.first, i = p.second;
+			if(w == f) continue;
+			if(!vis[w] && calc(v,w) > lab[v])
+				ans_edges.emplace_back(v,w), ans_indices.push_back(i); //found bridge (v,w)
+			reach[v] = min(reach[v],reach[w]);
 		}
-		reach[v] = min(reach[v],reach[u]);
+		return reach[v];
 	}
-}
-
-int main() {
-	ios::sync_with_stdio(0);
-	int n,m;
-	cin >> n >> m;
-	for(int i = 0; i < m; ++i) {
-		int u,v;
-		cin >> u >> v;
-		G[--u].push_back(pii(--v,i));
-		G[v].push_back(pii(u,i));
-	}
-	bridge(-1,0);
-	for(int i = 0; i < m; ++i) {
-		if(is_bridge[i])
-			cout << "edge " << i << " is a bridge\n";
-	}
-	return 0;
-}
+};

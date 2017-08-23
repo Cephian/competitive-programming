@@ -13,15 +13,15 @@ void dg_euler(int v, vi& path, vvi& G) {
 
 // ----- UNDIRECTED GRAPH -----
 struct euler_path {
-	vi e1,e2;
-	vvi G;
+	vector<int> e1,e2;
+	vector<vector<int>> G;
 	vector<bool> used = {};
 
 	euler_path(){}
 	euler_path(int N):G(N){}
 	euler_path(int N, int M):G(N){used.reserve(M);}
 
-	void get_path(vi& path, int v = 0) {
+	void get_path(vector<int> &path, int v = 0) {
 		while(G[v].size()) {
 			int i = G[v].back();
 			G[v].pop_back();

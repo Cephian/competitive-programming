@@ -19,7 +19,7 @@ namespace treap {
 	}
 
 	//split into nodes <= v and nodes > v
-	void split(node *d, data v, node *&l, node *&r) {
+	void split(node *d, const data &v, node *&l, node *&r) {
 		l = r = 0;
 		if(!d) return;
 		if(v <= d->v) {
@@ -60,14 +60,14 @@ namespace treap {
 	}
 
 	//insert value v
-	void insert(node *&d, int v) {
+	void insert(node *&d, data v) {
 		node *l,*r;
 		split(d,v,l,r);
 		d = merge(merge(l,new node(v)),r);
 	}
 
 	//erase value v
-	void erase(node *&d, int v) {
+	void erase(node *&d, data v) {
 		node *l,*m,*r;
 		split(d,v,l,m);
 		split(m,v+1,m,r);
@@ -83,7 +83,7 @@ namespace treap {
 	}
 	 
 	//number of elements strictly less than v
-	int index(const node* d, data v) {
+	int index(const node* d, const data &v) {
 		if(!d) return 0;
 		if(d->v == v) return size(d->l);
 		if(v < d->v) return index(d->l,v);
@@ -91,7 +91,7 @@ namespace treap {
 	}
 
 	//does d contain value v?
-	bool contains(const node* d, data v) {
+	bool contains(const node* d, const data &v) {
 		if(!d) return false;
 		if(v == d->v) return true;
 		if(v < d->v) return contains(d->l,v);

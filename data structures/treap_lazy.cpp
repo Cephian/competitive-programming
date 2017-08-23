@@ -9,7 +9,7 @@ namespace treap {
 	};
 
 	//lazy update to all values in subtree of d
-	inline void update(node* d, int val) {
+	inline void update(node* d, data val) {
 		if(d) d->lazy += val;
 	}
 
@@ -28,7 +28,7 @@ namespace treap {
 		return d?d->sz:0;
 	}
 
-	//recalc sie from children
+	//recalc size from children
 	inline void recalc(node *d) {
 		d->sz = 1 + size(d->l) + size(d->r);
 	}
@@ -127,3 +127,5 @@ namespace treap {
 		print(d->l);
 	}
 }
+
+treap::node *root = 0;

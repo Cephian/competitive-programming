@@ -1,9 +1,12 @@
-//repsents the union of intervals
+//represents a set of intervals
 struct interval_union : set<pii> {
-	inline void merge(pii &p, set<pii>::iterator q) {
+	inline void merge(pii &p, const set<pii>::iterator &q) {
 		p.first = min(p.first,q->first), p.second = max(p.second,q->second);
 		erase(q);
 	}
+
+	//add [l,r]
+	//return true if it was merged with some other interval
 	bool add(int l, int r) {
 		pii p(l,r);
 		set<pii>::iterator c;
@@ -15,6 +18,4 @@ struct interval_union : set<pii> {
 		insert(p);
 		return mrg;
 	}
-
-	void remove(int l, int r) { erase(pii(l,r)); }
 };

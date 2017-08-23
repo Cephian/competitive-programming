@@ -17,7 +17,7 @@ int powc(int a,int b) {
 //K is the length of x[]
 //v=0 : DFT, v=1 : IDFT
 void FFT(int x[],int K,int v){
-	w[0]=1;
+	w[0] = 1;
 	int G = powc(g,(bigp-1)/K);
 	for(int i = 0; i < K; ++i)
 		w[i+1] = (ll)w[i]*G%bigp;

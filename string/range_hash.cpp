@@ -5,6 +5,7 @@ struct str_hash {
 	str_hash(const string& s) {
 		h1.resize(s.size()+1,0);
 		h2.resize(s.size()+1,0);
+		b1.reserve(s.size()+1), b2.reserve(s.size()+1);
 		while(b1.size() <= s.size()) {
 			b1.push_back(1LL * b1.back() * B % M1);
 			b2.push_back(1LL * b2.back() * B % M2);
