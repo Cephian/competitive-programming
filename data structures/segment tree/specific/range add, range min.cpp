@@ -10,7 +10,7 @@ struct segt {
 	segt();
 	segt(int N):N(N),t(2*N),d(N){h = 32 - __builtin_clz(N);}
 
-	const static T NONE = numeric_limits<T>::highest();
+	const static T NONE = numeric_limits<T>::max(); //min()
 	inline static T combine(const T a, const T b) {return min(a,b);}
 
 	inline void apply(int p, T value) {

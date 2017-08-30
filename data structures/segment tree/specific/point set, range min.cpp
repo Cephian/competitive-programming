@@ -5,7 +5,7 @@ struct segt {
 	vector<T> t;
 	segt(int N):N(N),t(2*N){}
 
-	constexpr static T NONE = numeric_limits<T>::highest();
+	constexpr static T NONE = numeric_limits<T>::max(); //min()
 	static inline T combine(T a, T b) {return min(a,b);}
 
 	//update point i

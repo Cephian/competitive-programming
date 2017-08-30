@@ -1,5 +1,5 @@
 // variables in a clause are represented in the a,b arrays as follows:
-// variables range from 0 to k-1.
+// variables range from 0 to n-1.
 // a non-negated variable v is 2v+1, negated is 2v
 
 // the formula is (a[0] OR b[0]) AND ... AND (a[c] OR b[c])
