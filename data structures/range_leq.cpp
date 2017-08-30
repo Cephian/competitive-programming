@@ -5,9 +5,9 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef long long ll;
 
-// answers range queries with inequalities in O(log^2 n)
-// can be modified to compute other decomposable values of a list
-// e.g. xor in [l,r] of elements <= k
+//answers range queries with inequalities in O(log^2 n)
+//can be modified to compute other decomposable values of a list
+//e.g. xor in [l,r] of elements <= k
 template <class T>
 struct range_leq {
 	int N;
