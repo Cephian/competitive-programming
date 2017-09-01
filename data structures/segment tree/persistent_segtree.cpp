@@ -66,6 +66,8 @@ struct per_seg {
 	void update(int i, int a, int t) {
 		roots.push_back(u(roots[t],i,a));
 	}
+
+	
 };
  
 /* USAGE */

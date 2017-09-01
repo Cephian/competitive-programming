@@ -1,15 +1,22 @@
-//point update, range query, 1-indexed
+//point update, range query, 0-indexed
 template <class T>
 struct bit {
 	vector<T> b;
-	bit(int n):b(n+1){};
+	void init(int n){b.resize(n+1);}
+	bit(){}
+	bit(int n){init(n);}
 	inline void update(int i, T v) {
-		for(;i<b.size();b[i]+=v,i+=i&-i);
+		for(++i; i<b.size(); i+=i&-i)
+			b[i] += v;
 	}
+	//sum of the first i values
 	int prefix(int i) const {
-		return i?b[i]+prefix(i^(i&-i)):0;
+		T a = 0;
+		for(; i; i^=i&-i)
+			a += b[i];
+		return a;
 	}
 	inline int query(int l, int r) const {
-		return prefix(r)-prefix(l-1);
+		return prefix(r+1)-prefix(l);
 	}
-}
+};
