@@ -76,19 +76,3 @@ struct dinic {
 		return tot;
 	}
 };
-
-// solution to spoj FASTFLOW
-int main() {
-	int n,m;
-	scanf("%d%d",&n,&m);
-	int a,b;
-	ll c;
-	dinic d(n);
-	while(m--) {
-		scanf("%d%d%lld",&a,&b,&c);
-		d.add_edge(a-1,b-1,c);
-		d.add_edge(b-1,a-1,c);
-	}
-	printf("%lld\n",d.flow(0,n-1));
-	return 0;
-}

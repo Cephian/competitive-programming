@@ -23,5 +23,15 @@ struct str_hash {
 		if(a2 < 0) a2 += M2;
 		return a1 ^ (a2<<32);
 	}
+
+	//for one time entire-string hashing
+	static ll static_hash(const string& s) {
+		ll a1=0,a2=0;
+		for(char c : s) {
+			a1 = (a1 * B + c) % M1;
+			a2 = (a2 * B + c) % M2;
+		}
+		return a1 ^ (a2<<32);
+	}
 };
 vector<int> str_hash::b1={1},str_hash::b2={1};

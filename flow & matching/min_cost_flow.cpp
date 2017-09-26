@@ -70,27 +70,3 @@ struct mcmf {
 		return make_pair(totflow,totcost);
 	}
 };
-
-// BEGIN CUT
-// The following code solves UVA problem #10594: Data Flow
-
-int A[3005],n;
-
-int main() {
-	scanf("%d",&n);
-	mcmf M(2*n+3);
-	M.add_edge(2*n+1,2*n,4,0);
-	for(int i = 0; i < n; ++i) {
-		scanf("%d",A+i);
-		M.add_edge(2*n,i,1,0);
-		M.add_edge(i,i+n,1,-1);
-		M.add_edge(i+n,2*n+2,1,0);
-	}
-	for(int i = 0; i < n; ++i)
-		for(int j = i+1; j < n; ++j)
-			if(abs(A[i]-A[j])==1 || (A[i]-A[j])%7==0)
-				M.add_edge(i+n,j,1,0);
-	printf("%d\n",-int(M.flow(2*n+1,2*n+2).second));
-}
-
-// END CUT

@@ -7,6 +7,7 @@
 __gcd(a, b) //GCD : do not use let a or b be 0
 __builtin_popcount(a) //number of 1 bits
 __builtin_clz(a) // count leading zeroes
+32-__builtin_clz(a) //floor(log(a))
 
 //ORDER STATISTIC TREE
 typedef tree<int, null_type, less<int>,

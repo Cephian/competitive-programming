@@ -104,18 +104,3 @@ struct push_relabel {
 		return excess[t];
 	}
 };
-
-int main() {
-	int n,m;
-	scanf("%d%d",&n,&m);
-	int a,b;
-	ll c;
-	push_relabel P(n);
-	while(m--) {
-		scanf("%d%d%lld",&a,&b,&c);
-		P.add_edge(a-1,b-1,c);
-		P.add_edge(b-1,a-1,c);
-	}
-	printf("%lld\n",P.flow(0,n-1));
-	return 0;
-}
