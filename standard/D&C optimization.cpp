@@ -1,6 +1,6 @@
 //initialize me
 int L,R;
-int dp[K][N], A, INF = 1<<31;
+ll dp[K][N], A, INF = 1<<62;
 
 //remove array[x] from the range
 inline void sl_rem(int i) {
@@ -12,11 +12,12 @@ inline void sl_add(int i) {
 	// A += a[i];
 }
 
-inline void slide(int l, int r) {
+inline ll slide(int l, int r) {
 	while(l < L) sl_add(--L);
 	while(R < r) sl_add(++R);
 	while(L < l) sl_rem(L++);
 	while(r < R) sl_rem(R--);
+	//return A
 }
 
 // dp[k][i] = MAX{j <= i} dp[k-1][j-1] + cost(k .. i)

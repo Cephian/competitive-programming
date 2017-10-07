@@ -15,7 +15,7 @@ struct cmp_bit {
 
 	//sum of the first i values
 	inline T prefix(int i) {
-		int a = 0;
+		T a = 0;
 		for(;i;i ^= i&-i)
 			a += b[i];
 		return a;

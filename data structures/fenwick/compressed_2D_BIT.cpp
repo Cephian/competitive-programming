@@ -18,7 +18,7 @@ struct cmp_2d_bit {
 		T a = 0;
 		for(++x; x; x^=x&-x)
 			for(int z = y+1; z; z^=z&-z)
-				a += b[x][z];
+				a ^= b[x][z];
 		return a;
 	}
 
