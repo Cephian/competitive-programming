@@ -1,8 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 //note: destroys the graph in the process
 // and returns path/circuit backwards
 
 // ----- DIGRAPH -----
-void dg_euler(int v, vi& path, vvi& G) {
+void dg_euler(int v, vector<int>& path, vector<vector<int>>& G) {
 	while(G[v].size()) {
 		int u = G[v].back();
 		G[v].pop_back();
@@ -17,9 +20,13 @@ struct euler_path {
 	vector<vector<int>> G;
 	vector<bool> used = {};
 
-	euler_path(){}
-	euler_path(int N):G(N){}
-	euler_path(int N, int M):G(N){used.reserve(M);}
+	void init(int N){G.resize(N);}
+
+	inline void add_edge(int u, int v) {
+		G[u].push_back(e1.size()), G[v].push_back(e2.size());
+		e1.push_back(u), e2.push_back(v);
+		used.push_back(0);
+	}
 
 	void get_path(vector<int> &path, int v = 0) {
 		while(G[v].size()) {
@@ -33,25 +40,21 @@ struct euler_path {
 		path.push_back(v);
 	}
 
-	inline void add_edge(int u, int v) {
-		G[u].push_back(e1.size()), G[v].push_back(e2.size());
-		e1.push_back(u), e2.push_back(v);
-		used.push_back(0);
-	}
+	euler_path(int N){init(N);}
 };
 
 
 // ----- USAGE -----
-vvi G;
+vector<vector<int>> G;
 int main() {
 	euler_path e(10);
 	// add edges
-	vi path;
+	vector<int> path;
 	e.get_path(path);
 
 	//DIRECTED CASE
 	G = {{2,3},{0},{1},{4},{0}};
-	path = vi();
+	path.resize(0);
 	dg_euler(1,path,G);
 	for(auto u : path)
 		cout << u << "\n";

@@ -1,29 +1,24 @@
 struct lca {
-	int N;
-	vector<int> idx,depth;
-	vector<vector<int> > table;
-	void dfs(const vvi &T, int u, int v, int d, int &ctr) {
-		idx[v] = ctr;
-		depth[v] = d, table[0][ctr++] = v;
-		for(int i = 0; i < T[v].size(); ++i)
-			if(T[v][i] != u)
-				dfs(T,v,T[v][i],d+1,ctr), table[0][ctr++] = v;
+	void init(int n) { T.resize(N = n); }
+
+	void add_edge(int u, int v) {
+		T[u].push_back(v);
+		T[v].push_back(u);
 	}
 
-	static inline int lg(int a) {return 31-__builtin_clz(a);}
-
-	lca(){}
-	lca(const vvi &T, int root = 0):N(T.size()),idx(N),depth(N),table(lg(2*N-1)+1,vector<int>(2*N-1)) {
-		int ctr = 0;
-		dfs(T,-1,root,0,ctr);
+	//call build after edges are added
+	void build(int root = 0) {
+		idx.resize(N), depth.resize(N), table.assign(lg(2*N-1)+1,vector<int>(2*N-1));
+		dfs(-1,root,0);
 		for(int k = 0; k+1 < table.size(); ++k) {
 			for(int i = 0; i < table[k].size(); ++i) {
-				int j = min(i+(1<<(k)),(int)table[k].size()-1);
+				int j = min(i+(1<<k),(int)table[k].size()-1);
 				table[k+1][i] = (depth[table[k][i]] < depth[table[k][j]])?table[k][i]:table[k][j];
 			}
 		}
 	}
 
+	//lca(u,v)
 	inline int query(int u, int v) const {
 		u = idx[u], v = idx[v];
 		if(v < u) swap(u,v);
@@ -34,6 +29,20 @@ struct lca {
 
 	//unweighted distance between u and v
 	inline int dist(int u, int v) {
-		return depth[u]+depth[v]-2*depth[query(u,v)];
+		return depth[u] + depth[v] - 2*depth[query(u,v)];
+	}
+
+	lca(){}
+	lca(int n){init(n);}
+	int N,ctr=0;
+	vector<int> idx,depth;
+	vector<vector<int>> table,T;
+	static inline int lg(int a) {return 31-__builtin_clz(a);}
+	void dfs(int u, int v, int d) {
+		idx[v] = ctr;
+		depth[v] = d, table[0][ctr++] = v;
+		for(int i = 0; i < T[v].size(); ++i)
+			if(T[v][i] != u)
+				dfs(v,T[v][i],d+1), table[0][ctr++] = v;
 	}
 };

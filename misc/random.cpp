@@ -7,7 +7,7 @@
 __gcd(a, b) //GCD : do not use let a or b be 0
 __builtin_popcount(a) //number of 1 bits
 __builtin_clz(a) // count leading zeroes
-32-__builtin_clz(a) //floor(log(a))
+inline int log2(int a) { return 31-__builtin_clz(a); } //floor(log(a))
 
 //ORDER STATISTIC TREE
 typedef tree<int, null_type, less<int>,
@@ -37,7 +37,7 @@ for(rope <int>::iterator it = v.mutable_begin(); it != v.mutable_end(); ++it)
 
 //REGEX
 regex r("^[^f]*$");
-/*
+
 string result = regex_replace(string start, regex match, string replace);
-regex_match matches the whole string, whereas regex_search checks to see if it matches a substring
-*/
+// regex_match matches the whole string, whereas regex_search checks to see if it matches a substring
+

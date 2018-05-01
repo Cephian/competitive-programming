@@ -1,6 +1,7 @@
 typedef vector<vector<double> > matrix;
 constexpr double EPS = 1e-10;
 
+//rref matrix, return determinant
 double rref(matrix &M) {
 	int n = M.size(), m = M[0].size(), r = 0;
 	double det = 1;

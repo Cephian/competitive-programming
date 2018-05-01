@@ -7,6 +7,7 @@ ll pow(const ll a, const ll b, const ll P) {
 	return t * t % P;
 }
 
+//reduce matrix mod P
 ll rref(matrix &M, const ll P) {
 	int n = M.size(), m = M[0].size(), r = 0;
 	ll det = 1;
@@ -31,6 +32,7 @@ ll rref(matrix &M, const ll P) {
 	return det * (n == m && n == r);
 }
 
+//add matrices mod P
 matrix add(const matrix& A, const matrix& B, ll P) {
 	int n = A.size(), m = A[0].size();
 	matrix C(n,vector<ll>(m));
@@ -42,6 +44,7 @@ matrix add(const matrix& A, const matrix& B, ll P) {
 	return C;
 }
 
+//multiply matrices mod P
 matrix multiply(const matrix& A, const matrix& B, ll P) {
 	int n = A.size(), m = A[0].size(), l = B[0].size();
 	matrix C(n,vector<ll>(l));
@@ -52,6 +55,7 @@ matrix multiply(const matrix& A, const matrix& B, ll P) {
 	return C;
 }
 
+//matrix exponentials mod p
 matrix pow(const matrix& A, ll e, ll P) {
 	int n = A.size();
 	matrix C = matrix(n, vector<ll>(n));

@@ -26,7 +26,7 @@ ll sq_dist(point p, point q) { return norm(p-q); }
 // +------------------------------------------------+
 
 //how far along (a,b) is p? (projected)
-//0 -> at a, 1 -. at b
+//0 at a, 1 at b
 double project_scale(point p, point a, point b) {
 	return dot(p-a, b-a) / (double)norm(b-a);
 }

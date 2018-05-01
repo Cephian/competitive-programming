@@ -1,4 +1,5 @@
-vector<int> z_algo(const string &s, vector<int> &Z) {
+//v[i] is longest prefix of s starting from i
+void z_algo(const string &s, vector<int> &Z) {
 	int n = s.size(), l = 0, r = 0;
 	Z.resize(n);
 	for(int i = 1; i < n; ++i) {

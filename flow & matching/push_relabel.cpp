@@ -15,17 +15,17 @@ struct edge {
 struct push_relabel {
 	int V;
 	vector<edge> E;
-	vvi g;
-	vi label,Q,A;
+	vector<vector<int>> g;
+	vector<int> label,Q,A;
 	vector<ll> excess;
 	vector<bool> active;
 	int qf=0,qb=0;
 
 	push_relabel(int n) {
-		g = vvi(V=n);
-		label = Q = A = vi(V);
-		excess = vector<ll>(V);
-		active = vector<bool>(V);
+		g.resize(V=n);
+		label = Q = A = vector<int>(V);
+		excess.resize(V);
+		active.resize(V);
 	}
 
 	void add_edge(int u, int v, ll c) {

@@ -1,4 +1,4 @@
-//return pair<pt,pt> of two closest points in p
+//return pair<pont,point> of two closest points in p
 point p[N],strip[N];
 typedef pair<point,point> ppp;
 
@@ -14,7 +14,7 @@ inline double ds(ppp& p) {
 	return (p.first==p.second)?1e200:mag(p.first-p.second);
 }
 
-//return pair<pt,pt> of two closest points
+//return pair<point,point> of two closest points
 ppp closest(int i, int j) {
 	if(i+1 == j)
 		return ppp(p[i],p[i]);

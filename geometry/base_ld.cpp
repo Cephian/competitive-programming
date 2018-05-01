@@ -33,7 +33,7 @@ point projectPL(point p, point a, point b) {
 }
 
 //how far along (a,b) is p? (projected)
-//0 -> at a, 1 -. at b
+//0 at a, 1 at b
 ld project_scale(point p, point a, point b) {
 	return dot(p-a, b-a) / norm(b-a);
 }

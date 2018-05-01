@@ -38,7 +38,6 @@ vector<int> divisors(const map<int,int>& f) {
 	return ans;
 }
 
-//UNTESTED
 bool miller_rabin_primality(ll N) {
 	// deterministic for all <= 2 ^ 64
 	static const int p[12] = {2,3,5,7,11,13,17,19,23,29,31,37};
@@ -61,7 +60,6 @@ bool miller_rabin_primality(ll N) {
 	return true;
 }
 
-//UNTESTED
 mt19937 gen(time(0));
 ll pollard_rho(ll N) {
 	if (N % 2 == 0) return 2;

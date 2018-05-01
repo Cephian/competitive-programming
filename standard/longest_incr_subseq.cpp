@@ -1,4 +1,4 @@
-//FIND longest increasing subsequence
+//find length of longest increasing subsequence
 int lis(int *A, int n) {
 	if(!n) return 0;
 	vector<int> v = {0};
@@ -19,7 +19,7 @@ int lis(int *A, int n) {
 
 
 
-//CONSTRUCT longest increasing subsequence
+//construct longest increasing subsequence
 //store results in L (assumed to be empty)
 int lis(int *A, int n, vector<int> &L) {
 	if(!n) return 0;

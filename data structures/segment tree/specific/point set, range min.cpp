@@ -2,7 +2,7 @@
 template <class T>
 struct segt {
 	int N;
-	vector<T> t;
+	vector<T> t,m;
 	segt(int N):N(N),t(2*N){}
 
 	constexpr static T NONE = numeric_limits<T>::max(); //min()

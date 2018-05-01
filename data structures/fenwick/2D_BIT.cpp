@@ -14,7 +14,7 @@ struct bit_2d {
 				b[i][k] += v;
 	}
 
-	//xor of the 'prefix' i x j rectangle
+	//sum of the 'prefix' i x j rectangle
 	inline T prefix(int i, int j) {
 		T a = 0;
 		for(;i;i ^= i&-i)

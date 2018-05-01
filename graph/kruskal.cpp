@@ -4,14 +4,10 @@ struct kruskal {
 		int a,b;
 		T w;
 		bool in_mst;
-		bool operator<(const edge& e) const {
-			return w < e.w;
-		}
+		bool operator<(const edge& e) const { return w < e.w; }
 	};
 
 	vector<edge> E;
-	vector<int> uf;
-	int id(int u) { return (~uf[u]) ? uf[u] = id(uf[u]) : u; }
 
 	void init(int n) { uf.resize(n,-1); }
 	kruskal(int n) { init(n); }
@@ -30,4 +26,7 @@ struct kruskal {
 		}
 		return w;
 	}
+
+	vector<int> uf;
+	int id(int u) { return (~uf[u]) ? uf[u] = id(uf[u]) : u; }
 };

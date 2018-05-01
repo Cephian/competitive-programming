@@ -1,5 +1,3 @@
-//taken from stanford ACM notebook
-
 // store polynomials in a,b. set LA = len(a) and L = len(b)
 // call calculate(), a now stores a*b.
 const int maxn=4000000;

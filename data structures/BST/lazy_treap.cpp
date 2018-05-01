@@ -1,3 +1,4 @@
+//to un-lazy: ignore lazy,update,push,recalc
 namespace treap {
 	typedef int data;
 	struct node {
@@ -81,8 +82,7 @@ namespace treap {
 	void insert(node *&d, int v) {
 		node *l,*r;
 		split(d,v,l,r);
-		node* q = new node(v);
-		d = merge(merge(l,q),r);
+		d = merge(merge(l,new node(v)),r);
 	}
 
 	//erase value v

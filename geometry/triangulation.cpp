@@ -1,7 +1,7 @@
 //triangulate a polygon in O(n^2)
 
 bool same_side(point& a, point& b, point& u, point& v) {
-	return cross(b-a,u-a)>0 == cross(b-a,v-a)>0;
+	return cross(b-a,u-a) > 0 == cross(b-a,v-a) > 0;
 }
 
 bool is_ear(int i, vector<point>& p, vector<int>& prv, vector<int>& nxt) {
