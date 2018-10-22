@@ -1,4 +1,4 @@
-//return pair<pont,point> of two closest points in p
+//return pair<point,point> of two closest points in p
 point p[N],strip[N];
 typedef pair<point,point> ppp;
 

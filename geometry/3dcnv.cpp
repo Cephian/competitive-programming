@@ -1,4 +1,4 @@
-//modified from an example solution of an NAIPC 2017 problem "Apple Market"
+//modified from an example solution of an NAIPC 2017 problem "Stars in a Can"
 
 #define EPS (1e-8)
 #define sign(x) (((x)>EPS)-((x)<(-EPS)))

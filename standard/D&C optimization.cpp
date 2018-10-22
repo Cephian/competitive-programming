@@ -20,7 +20,7 @@ inline ll slide(int l, int r) {
 	//return A
 }
 
-// dp[k][i] = MAX{j <= i} dp[k-1][j-1] + cost(k .. i)
+// dp[k][i] = MAX{j <= i} dp[k-1][j-1] + cost(j .. i)
 // ONE INDEX YOUR ARRAY, AND SET dp[?][0] = 0
 void compute(int k, int l, int r, int bl, int br) {
 	int m = (l+r)/2, opt;
