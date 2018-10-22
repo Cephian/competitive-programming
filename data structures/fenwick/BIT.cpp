@@ -10,13 +10,13 @@ struct bit {
 			b[i] += v;
 	}
 	//sum of the first i values
-	int prefix(int i) const {
+	T prefix(int i) const {
 		T a = 0;
 		for(; i; i^=i&-i)
 			a += b[i];
 		return a;
 	}
-	inline int query(int l, int r) const {
+	inline T query(int l, int r) const {
 		return prefix(r+1)-prefix(l);
 	}
 };

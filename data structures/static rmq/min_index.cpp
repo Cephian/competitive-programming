@@ -7,7 +7,7 @@ struct rmq_ind {
 		A = a;
 		for(int i = 0; i < n; ++i)
 			t[0][i] = i;
-		for(int k = 1, p = 1; k < t.size(); ++k, p<<=1)
+		for(int k = 1, p = 1; k < (int)t.size(); ++k, p<<=1)
 			for(int i = 0; i < n; ++i)
 				t[k][i] = (i+p<n && a[t[k-1][i+p]] < a[t[k-1][i]])?t[k-1][i+p]:t[k-1][i];
 	}
