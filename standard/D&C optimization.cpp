@@ -2,7 +2,7 @@
 int L,R;
 ll dp[K][N], A, INF = 1<<62;
 
-//remove array[x] from the range
+//remove array[i] from the range
 inline void sl_rem(int i) {
 	// A -= a[i];
 }
