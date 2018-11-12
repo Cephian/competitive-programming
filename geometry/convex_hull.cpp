@@ -2,9 +2,7 @@
 template <class T>
 struct convex_hull {
 	typedef pair<T,T> point;
-	//list of points in the convex hull after calc()
-	vector<point> hull;
-
+	
 	int N = 0;
 	vector<point> pts;
 
@@ -18,7 +16,8 @@ struct convex_hull {
 	void add_point(T x, T y) { pts.emplace_back(x,y); }
 
 	//calculate the convex hull
-	void calc(bool keep_redundant = false) {
+	vector<point> calc(bool keep_redundant = false) {
+		vector<point> hull;
 		int N = pts.size();
 		for(int i = 1; i < N; ++i)
 			if(pts[i] < pts[0])
@@ -32,5 +31,6 @@ struct convex_hull {
 		}
 		if(!cmp(hull[hull.size()-2],hull.back(),hull[0],keep_redundant))
 			hull.pop_back();
+		retrun hull;
 	}
 };
