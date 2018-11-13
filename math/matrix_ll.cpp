@@ -1,9 +1,9 @@
-typedef vector<vector<ll> > matrix;
+typedef vector<vector<ll>> matrix;
 
 ll pow(const ll a, const ll b, const ll P) {
 	if(!b) return 1;
 	if(b&1) return a * pow(a,b-1,P) % P;
-	ll t = pow(a,b>>1,P);
+	ll t = pow(a, b/2, P);
 	return t * t % P;
 }
 
@@ -39,7 +39,7 @@ matrix add(const matrix& A, const matrix& B, ll P) {
 	for(int i = 0; i < n; ++i)
 		for(int j = 0; j < m; ++j) {
 			C[i][j] = A[i][j] + B[i][j];
-			if(C[i][j] > P) C[i][j] -= P;
+			if(C[i][j] >= P) C[i][j] -= P;
 		}
 	return C;
 }

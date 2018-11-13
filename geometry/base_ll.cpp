@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 typedef long long ll;
 
 struct point { 
@@ -50,7 +53,7 @@ bool onPL(point p, point a, point b){
 
 //is p on segment (a,b) ?
 bool onPS(point p, point a, point b){
-	return cross(a-p, b-p) == 0 && (a<p != b<p || p==a || p==b);
+	return cross(a-p, b-p) == 0 && ((a<p) != (b<p) || p==a || p==b);
 }
 
 // are lines (a,b) and (c,d) parallel?
@@ -59,7 +62,7 @@ bool parallelLL(point a, point b, point c, point d) {
 }
 
 // are lines (a,b) and (c,d) equal?
-bool equalLL(pt a, pt b, pt c, pt d) { 
+bool equalLL(point a, point b, point c, point d) { 
   return onPL(c,a,b) && onPL(d,a,b) && onPL(a,c,d) && onPL(b,c,d);
 }
 
@@ -101,12 +104,12 @@ point rotate90CC(point p) {
 // +------------------------------------------------+
 
 //angle of arc with radius r through p and q
-double angleA(point p, point q, ld r)	{
+double angleA(point p, point q, double r)	{
 	return 2 * asin(norm(q-p)/(4*r*r));
 }
 
 //length of arc with radius r through p and q
-double lengthA(point p, point q, ld r) {
+double lengthA(point p, point q, double r) {
 	return 2 * r * asin(norm(q-p)/(4*r*r));
 }
 
@@ -123,7 +126,7 @@ int sidePG(point p, vector<point> &g) {
 	for(int i = 0; i < n; i++){
 		point a = g[i];
 		point b = g[(i+1) % n];
-		c ^= (a.y <= p.y != b.y <= p.y) && (b.y > a.y != (a.x - b.x)*(p.y - a.y) < (a.x - p.x)*(b.y - a.y));    
+		c ^= ((a.y<=p.y) != (b.y<=p.y)) && ((b.y>a.y) != ((a.x-b.x)*(p.y-a.y)<(a.x-p.x)*(b.y-a.y)));    
 	}
 	return c*2-1;
 }
@@ -131,7 +134,7 @@ int sidePG(point p, vector<point> &g) {
 //note it is always half an integer
 double areaG(vector<point> &g) {
 	ll area = 0;
-	for(int i = 0; i < g.size(); i++)
+	for(int i = 0; i < (int)g.size(); i++)
 		area += cross(g[i], g[(i+1)%g.size()]);
 	return fabs(area / 2.0);
 }
@@ -139,6 +142,9 @@ double areaG(vector<point> &g) {
 // +------------------------------------------------+
 // |              COMPARISON FUNCTIONS              |
 // +------------------------------------------------+
+
+// "globals" we might need to capture
+point POINT, DIR, LN_A, LN_B;
 
 //Sort around POINT assuming they all lie on the same halfplane
 bool cmp1(point a, point b){
@@ -159,12 +165,21 @@ bool cmp2(point a, point b){
 }
 
 //Sort lines by angle starting and ending from a line in the direction of LINE
+struct ln {
+	point p, q;
+	bool operator==(const ln& l) const { return p==l.p && q==l.q; }
+};
 bool cmp4(const ln &l, const ln &m){
 	if(l==m) return false;
-	pt p = LN_A, q = LN_B, a = LN_A + l.q - l.p, b = LN_A + m.q - m.p;
-	if(cross(a-p, b-p) == 0 && (a<p == b<p))
+	point p = LN_A, q = LN_B, a = LN_A + l.q - l.p, b = LN_A + m.q - m.p;
+	if(cross(a-p, b-p) == 0 && ((a<p) == (b<p)))
 		return sidePL(l.p, l.q, m.p) >= 0;
 	if(cross(a-p,a-q) * cross(b-p,b-q) >= 0)
 		return (cross(a-p,a-q) == 0 && dot(a-p,a-q) < 0) || (!(cross(b-p,b-q) == 0 && dot(b-p,b-q) < 0) && cross(b-p,a-p) < 0);
 	return cross(a-p,a-q) > 0;
 }
+
+int main() {
+	
+}
+

@@ -6,7 +6,7 @@ struct bit {
 	bit(){}
 	bit(int n){init(n);}
 	inline void update(int i, T v) {
-		for(++i; i<b.size(); i+=i&-i)
+		for(++i; i<(int)b.size(); i+=i&-i)
 			b[i] += v;
 	}
 	//sum of the first i values

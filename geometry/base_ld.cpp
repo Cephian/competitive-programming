@@ -229,10 +229,7 @@ ld areaG(vector<point> &g) {
 // +------------------------------------------------+
 
 // "globals" we might need to capture
-point POINT;
-point DIR;
-point LN_A;
-point LN_B;
+point POINT, DIR, LN_A, LN_B;
 
 //Sort radially around POINT assuming they all lie on the same halfplane
 bool cmp1(point a, point b){

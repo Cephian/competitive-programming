@@ -2,10 +2,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//USAGE: FFT::fft(A, B) for vector<int> A and B of coefs
+// double --> ld is about 30% slower
+typedef long double ld;
 namespace FFT {
 	struct base {
-		double re,im;
-		base(double r=0, double i=0):re(r),im(i){}
+		ld re,im;
+		base(ld r=0, ld i=0):re(r),im(i){}
 		inline base operator*(const base& b) const {
 			return base(re*b.re-im*b.im,re*b.im+b.re*im);
 		}
@@ -19,7 +22,7 @@ namespace FFT {
 			re += b.re, im += b.im;
 		}
 		inline void operator*=(const base& b) {
-			double r = re;
+			ld r = re;
 			re = re*b.re-im*b.im;
 			im = r*b.im+b.re*im;
 		}
@@ -40,7 +43,7 @@ namespace FFT {
 	vector<base> wlen_pw;
 	void fft(base a[], int n, bool invert) {
 		static int last_n = 0;
-		static const double two_pi = acos(0)*4;
+		static const ld two_pi = acosl(0)*4;
 		if(n != last_n) {
 			if(n > last_n) rev.resize(n), wlen_pw.resize(n);
 			last_n = n;
@@ -56,7 +59,7 @@ namespace FFT {
 			if(i < rev[i])
 				swap(a[i], a[rev[i]]);
 		for(int len=2; len<=n; len<<=1) {
-			double ang = two_pi/len * (invert?-1:+1);
+			ld ang = two_pi/len * (invert?-1:+1);
 			int len2 = len>>1;
 			base wlen(cos(ang), sin(ang));
 			wlen_pw[0] = base(1);
@@ -74,48 +77,32 @@ namespace FFT {
 				a[i] /= n;
 	}
 
-	void multiply (const vector<int> &a, const vector<int> &b, vector<int> &res) {
+	vector<ll> multiply (const vector<int> &a, const vector<int> &b) {
+		vector<ll> res;
 		vector<base> P(max(a.size(),b.size())),Q;
-		for(int i = 0; i < a.size(); ++i)
+		for(size_t i = 0; i < a.size(); ++i)
 			P[i].re = a[i];
-		for(int i = 0; i < b.size(); ++i)
+		for(size_t i = 0; i < b.size(); ++i)
 			P[i].im = b[i];
 		size_t n = 2;
 		while ((n>>1) < P.size()) n <<= 1;
 		P.resize(n), Q.resize(n);
 		fft(&P[0], n, false);
+		const base rot(0,-0.25);
 		for(size_t i = 0; i != n; ++i) {
 			base tmp = P[i?n-i:0].conj();
-			Q[i] = (P[i]+tmp)*(P[i]-tmp)*base(0,-0.25);
+			Q[i] = (P[i]+tmp)*(P[i]-tmp)*rot;
 		}
 		fft(&Q[0], n, true);
 		res.resize(n);
 		for(size_t i = 0; i != n; ++i)
-			res[i] = rint(Q[i].re);
+			res[i] = llrint(Q[i].re);
+		return res;
 	}
 }
 
 int main() {
-	int T,n;
-	scanf("%d",&T);
-	for(int t = 0; t < T; ++t) {
-		vector<int> A,B,ans;
-		int a,b;
-		scanf("%d",&a);
-		A.resize(a+1);
-		for(int k = 0; k <= a; ++k)
-			scanf("%d",&A[k]);
-		scanf("%d",&b);
-		B.resize(b+1);
-		for(int k = 0; k <= b; ++k)
-			scanf("%d",&B[k]);
-		FFT::multiply(A,B,ans);
-		while(ans.size() && !ans.back())
-			ans.pop_back();
-		printf("%d\n",(int)ans.size()-1);
-		for(int i = 0; i < ans.size(); ++i)
-			printf("%d ",ans[i]);
-		printf("\n");
-
-	}
+	vector<int> A = {1, -3, 1}    // x^2 - 3x + 1
+	vector<int> B = {-7, 2, 0, 2} // -2x^3 + 2x - 7
+	vector<ll> C = FFT:multiply(A, B); // higher coefs might be zero
 }
