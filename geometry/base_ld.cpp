@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 typedef long double ld;
 constexpr ld EPS = 1e-10;
 struct point { 
@@ -21,7 +24,7 @@ ld cross(point p, point q) { return p.x*q.y - p.y*q.x; }
 ld norm(point p) { return p.x*p.x + p.y*p.y; }
 ld mag(point p) { return sqrtl(p.x*p.x + p.y*p.y); }
 ld dist(point p, point q) { return mag(p - q); }
-ld sq_dist(point p, point q) { return norm(p - q) }
+ld sq_dist(point p, point q) { return norm(p - q); }
 
 // +------------------------------------------------+
 // |               LINES AND SEGMENTS               |
@@ -39,7 +42,7 @@ ld project_scale(point p, point a, point b) {
 }
 
 //how far along (a,b) is p? (projected)
-// 0 -> at a, |b-a| -> at b 
+// 0 at a, |b-a| at b 
 ld project_dist(point p, point a, point b) {
 	return dot(p-a, b-a) / mag(b-a);
 }
@@ -65,7 +68,7 @@ bool onPL(point p, point a, point b){
 
 //is p on segment (a,b) ?
 bool onPS(point p, point a, point b){
-	return fabsl(cross(a-p, b-p)) < EPS && (a<p != b<p || p==a || p==b);
+	return fabsl(cross(a-p, b-p)) < EPS && ( (a<p) != (b<p) || p==a || p==b);
 }
 
 // are lines (a,b) and (c,d) parallel?
@@ -74,7 +77,7 @@ bool parallelLL(point a, point b, point c, point d) {
 }
 
 // are lines (a,b) and (c,d) equal?
-bool equalLL(pt a, pt b, pt c, pt d) { 
+bool equalLL(point a, point b, point c, point d) { 
   return onPL(c,a,b) && onPL(d,a,b) && onPL(a,c,d) && onPL(b,c,d);
 }
 
@@ -134,8 +137,8 @@ point rotate90CC(point p) {
 //center of arc with radius r through p and q
 point centerA(point p, point q, ld r) {
 	point m = (p+q)/2;
-	auto l = perpendicularS(p,q);
-	ld d = sqrtl(r*r - norm(b-a)/4);
+	auto l = perpendicularS(p, q);
+	ld d = sqrtl(r*r - norm(q - p)/4);
 	return m + (l.second-l.first)/mag(l.second-l.first)*d; 
 }
 
@@ -152,15 +155,17 @@ ld lengthA(point p, point q, ld r) {
 //circumcircle of 3 points as <center,radius>
 pair<point,ld> circumcirclePPP(point a, point b, point c) {
 	auto l = perpendicularS(a,b), m = perpendicularS(a,c);
-	return make_pair(intersectLL(l.first,l.second,m.first,m.second), mag(p-a));
+	auto p = intersectLL(l.first, l.second, m.first, m.second);
+	return make_pair(p, mag(p-a));
 }
 
 //incircle of 3 points as <center, radius>
-pair<point,ld> incirclePPP(pt a, pt b, pt c){
+pair<point,ld> incirclePPP(point a, point b, point c){
 	ld d = 1.0/(mag(a-b)+mag(a-c)+mag(b-c));
 	return make_pair((a * mag(b-c) + b * mag(a-c) + c * mag(a-b))*d,cross(b-a,c-a)*d);
 }
 
+// rotate p around origin by t radians
 point rotateP(point p, ld t) { 
   return point(p.x*cos(t)-p.y*sin(t), p.x*sin(t)+p.y*cos(t)); 
 }
@@ -182,7 +187,7 @@ vector<point> intersectLC(point a, point b, point c, ld r) {
 }
 
 // intersect circles with (center,radius) equal to (c,r) and (d,s)
-vector<pt> intersectCC(point c, ld r, point d, ld s) {
+vector<point> intersectCC(point c, ld r, point d, ld s) {
 	vector<point> ans;
 	ld d1 = mag(c-d);
 	if(d1 > r+s || d1+min(r,s) < max(r,s)) return ans;
@@ -207,14 +212,14 @@ int sidePG(point p, vector<point> &g) {
 	for(int i = 0; i < n; i++){
 		point a = g[i];
 		point b = g[(i+1) % n];
-		c ^= (a.y <= p.y != b.y <= p.y) && (b.y > a.y != (a.x - b.x)*(p.y - a.y) < (a.x - p.x)*(b.y - a.y));    
+		c ^= ((a.y<=p.y) != (b.y<=p.y)) && ((b.y>a.y) != ((a.x-b.x)*(p.y-a.y)<(a.x-p.x)*(b.y-a.y)));    
 	}
 	return c*2-1;
 }
 
 ld areaG(vector<point> &g) {
 	ld area = 0;
-	for(int i = 0; i < g.size(); i++)
+	for(int i = 0; i < (int)g.size(); i++)
 		area += cross(g[i], g[(i+1)%g.size()]);
 	return fabsl(area / 2.0);
 }
@@ -223,12 +228,18 @@ ld areaG(vector<point> &g) {
 // |              COMPARISON FUNCTIONS              |
 // +------------------------------------------------+
 
-//Sort around POINT assuming they all lie on the same halfplane
+// "globals" we might need to capture
+point POINT;
+point DIR;
+point LN_A;
+point LN_B;
+
+//Sort radially around POINT assuming they all lie on the same halfplane
 bool cmp1(point a, point b){
 	return cross(a-POINT,b-POINT) > 0;
 }
 
-//Sort around POINT starting and ending from a line in the direction of DIR
+// Sort around POINT starting and ending from a line in the direction of DIR
 bool cmp2(point a, point b){
 	if(a==b) return false;
 	point p = POINT, q = POINT+DIR;
@@ -241,16 +252,20 @@ bool cmp2(point a, point b){
 	       
 }
 
-//Sort according to projections on LN_A -> LN_B
+// Sort according to projections on LN_A -> LN_B
 bool cmp3(point a, point b){
 	point p = projectPL(a, LN_A, LN_B), q = projectPL(b, LN_A, LN_B);
-	return LN_A < LN_B != q < p;
+	return (LN_A < LN_B) != (q < p);
 }
 
-//Sort lines by angle starting and ending from a line in the direction of LINE
+// Sort lines by angle starting and ending from a line in the direction of LINE
+struct ln {
+	point p, q;
+	bool operator==(const ln& l) const { return p==l.p && q==l.q; }
+};
 bool cmp4(const ln &l, const ln &m){
 	if(l==m) return false;
-	pt p = LN_A, q = LN_B, a = LN_A + l.q - l.p, b = LN_A + m.q - m.p;
+	point p = LN_A, q = LN_B, a = LN_A + l.q - l.p, b = LN_A + m.q - m.p;
 	if(cross(a-p, b-p) == 0 && (a<p == b<p))
 		return sidePL(l.p, l.q, m.p) >= 0;
 	if(cross(a-p,a-q) * cross(b-p,b-q) >= 0)
@@ -258,4 +273,7 @@ bool cmp4(const ln &l, const ln &m){
 	return cross(a-p,a-q) > 0;
 }
 
+int main() {
+	
+}
 
