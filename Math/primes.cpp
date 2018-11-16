@@ -5,7 +5,7 @@ void factor_all() {
 		fact[i] = i;
 	for(int i = 2; i < N; ++i)
 		if(fact[i] == i)
-			for(ll j = ll(i)*i; j < N; j += i)
+			for(ll j = 1LL * i * i; j < N; j += i)
 				fact[j] = i;
 }
 
@@ -29,13 +29,25 @@ vector<int> divisors(const map<int,int>& f) {
 		int w=m,a=1;
 		for(auto p : f) {
 			int e = w%(p.second+1);
-			w/=p.second+1;
+			w /= p.second+1;
 			while(e--)
 				a*=p.first;
 		}
 		ans.push_back(a);
 	}
 	return ans;
+}
+
+// returns <x, y, gcd(a,b)> such that ax + by = gcd(a,b)
+tuple<ll,ll,ll> extended_euclid(ll a, ll b) {
+	ll s = 0, x = 1, t = 1, y = 0, r = b, g = a, tmp;
+	while (r) {
+		tmp = x - (g / r) * s; x = s; s = tmp;
+		tmp = y - (g / r) * t; y = t; t = tmp;
+		tmp = g % r; g = r; r = tmp;
+	}
+	if (a < 0) x = -x, y = -y, g = -g;
+	return make_tuple(x, y, g);
 }
 
 bool miller_rabin_primality(ll N) {

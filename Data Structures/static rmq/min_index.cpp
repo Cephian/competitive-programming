@@ -1,4 +1,5 @@
-// O(n log n) space, O(1) index query RMQ
+// O(n log n) space, O(1) index query R(min)Q
+// returns the INDEX of the min element
 struct rmq_ind {
 	vector<vector<int> > t;
 	int *A;

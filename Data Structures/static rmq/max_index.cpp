@@ -1,9 +1,10 @@
-// O(n log n) space, O(1) index query RMQ
-struct rmq_ind {
+// O(n log n) space, O(1) index query R(max)Q
+// returns the INDEX of the max element
+struct rMq_ind {
 	vector<vector<int> > t;
 	int *A;
-	rmq_ind(){}
-	rmq_ind(int* a, int n):t(32-__builtin_clz(n),vector<int>(n)) {
+	rMq_ind(){}
+	rMq_ind(int* a, int n):t(32-__builtin_clz(n),vector<int>(n)) {
 		A = a;
 		for(int i = 0; i < n; ++i)
 			t[0][i] = i;

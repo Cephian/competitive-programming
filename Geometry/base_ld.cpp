@@ -199,6 +199,38 @@ vector<point> intersectCC(point c, ld r, point d, ld s) {
 	return ans;
 }
 
+// returns a vector of tangents (internal tangents iff inner = true, external otherwise)
+// each vector has two points, the tangent point on c and the tangent point on d
+vector<vector<point>> tangentCC(point c, ld r, point d, ld s, bool inner) {
+	vector<vector<point>> ans;
+	if (inner) s = -s;
+	point dist = d-c;
+	ld dr = r-s, d2 = norm(dist), h2 = d2-dr*dr;
+	if (d2 == 0 || h2 < 0) 
+		return ans;
+	for (ld sign : {-1,1}) {
+		point v = (dist*dr + rotate90CC(dist)*sqrt(h2)*sign)/d2;
+		ans.push_back({c + v*r, d + v*s});
+	}
+	if(ans.size() == 2 && ans[0] == ans[1]){
+		ans.pop_back();
+	}
+	return ans;
+}
+
+// returns the points of tangency to c from p  
+// the first tangent is always the one such that if you started at p, walked along
+// the tangent line, and then walked along the circle without changing direction,
+// you'd be walking clockwise around the circle (unless p is on c in which case
+// there is one tangent)
+vector<point> tangentPC(point p, point c, ld r) {
+	vector<point> ans;
+	for(vector<point> v : tangentCC(p, 0, c, r, true)){
+		ans.push_back(v[1]);
+	}
+	return ans;
+}
+
 // +------------------------------------------------+
 // |                    POLYGONS                    |
 // +------------------------------------------------+

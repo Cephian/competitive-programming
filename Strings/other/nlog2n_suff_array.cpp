@@ -22,9 +22,9 @@ void build_sa() {
 		suff_arr[i] = s[i];
 		L[i]=i;
 	}
-	gap=1;
+	gap = 1;
 	while(gap < n) {
-		sort(L,L+n,cmp);
+		sort(L, L+n, cmp);
 		for(int i = 0; i < n; ++i)
 			tmp[L[i]] = (i && !cmp(L[i],L[i-1]) && !cmp(L[i-1],L[i])) ? tmp[L[i-1]] : i;
 		swap(suff_arr,tmp);

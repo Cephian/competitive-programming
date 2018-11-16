@@ -1,4 +1,3 @@
-//UNTESTED
 struct top_sort {
 	vector<vector<int>> G; //stores G; take it out if you want to use it elsewhere
 	vector<int> order; //stores the topological sort
