@@ -7,49 +7,52 @@
 \BOOKMARK [2][-]{subsection.1.6}{KD-Tree}{section.1}% 7
 \BOOKMARK [2][-]{subsection.1.7}{Wavelet Tree}{section.1}% 8
 \BOOKMARK [2][-]{subsection.1.8}{Lazy Treap}{section.1}% 9
-\BOOKMARK [1][-]{section.2}{Flow and Matching}{}% 10
-\BOOKMARK [2][-]{subsection.2.1}{Max Flow}{section.2}% 11
-\BOOKMARK [2][-]{subsection.2.2}{Bipartite Matching}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.3}{Min-cost Flow}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.4}{LP Solver}{section.2}% 14
-\BOOKMARK [2][-]{subsection.2.5}{Stable Marriage}{section.2}% 15
-\BOOKMARK [1][-]{section.3}{Geometry}{}% 16
-\BOOKMARK [2][-]{subsection.3.1}{2D Floating-point Geometry}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.2}{3D Geometry}{section.3}% 18
-\BOOKMARK [2][-]{subsection.3.3}{2D Convex Hull}{section.3}% 19
-\BOOKMARK [2][-]{subsection.3.4}{Pair of Closest Points}{section.3}% 20
-\BOOKMARK [2][-]{subsection.3.5}{Triangulation}{section.3}% 21
-\BOOKMARK [2][-]{subsection.3.6}{Delaunay Triangulation}{section.3}% 22
-\BOOKMARK [2][-]{subsection.3.7}{3D Convex Hull}{section.3}% 23
-\BOOKMARK [1][-]{section.4}{Graphs}{}% 24
-\BOOKMARK [2][-]{subsection.4.1}{Bridge Edges}{section.4}% 25
-\BOOKMARK [2][-]{subsection.4.2}{Dijkstra's}{section.4}% 26
-\BOOKMARK [2][-]{subsection.4.3}{Euler Path}{section.4}% 27
-\BOOKMARK [2][-]{subsection.4.4}{Kruskal's Algorithm}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.5}{Strongly-connected Components}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.6}{Topological Sorting}{section.4}% 30
-\BOOKMARK [1][-]{section.5}{Math}{}% 31
-\BOOKMARK [2][-]{subsection.5.1}{Floating-Point Matrix}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.2}{Finite Field Matrix}{section.5}% 33
-\BOOKMARK [2][-]{subsection.5.3}{Primes}{section.5}% 34
-\BOOKMARK [1][-]{section.6}{Miscellaneous}{}% 35
-\BOOKMARK [2][-]{subsection.6.1}{2-SAT}{section.6}% 36
-\BOOKMARK [2][-]{subsection.6.2}{Convex Hull Trick}{section.6}% 37
-\BOOKMARK [2][-]{subsection.6.3}{Divide and Conquer Optimization}{section.6}% 38
-\BOOKMARK [2][-]{subsection.6.4}{Fast C++ Input}{section.6}% 39
-\BOOKMARK [2][-]{subsection.6.5}{Longest Increasing Subsequence}{section.6}% 40
-\BOOKMARK [2][-]{subsection.6.6}{Java}{section.6}% 41
-\BOOKMARK [2][-]{subsection.6.7}{Other}{section.6}% 42
-\BOOKMARK [1][-]{section.7}{Strings}{}% 43
-\BOOKMARK [2][-]{subsection.7.1}{Suffix Array}{section.7}% 44
-\BOOKMARK [2][-]{subsection.7.2}{KMP Algorithm}{section.7}% 45
-\BOOKMARK [2][-]{subsection.7.3}{String Hashing}{section.7}% 46
-\BOOKMARK [2][-]{subsection.7.4}{Z-Algorithm}{section.7}% 47
-\BOOKMARK [1][-]{section.8}{Transforms}{}% 48
-\BOOKMARK [2][-]{subsection.8.1}{FFT}{section.8}% 49
-\BOOKMARK [2][-]{subsection.8.2}{NTT}{section.8}% 50
-\BOOKMARK [2][-]{subsection.8.3}{FHWT and Similar}{section.8}% 51
-\BOOKMARK [1][-]{section.9}{Trees}{}% 52
-\BOOKMARK [2][-]{subsection.9.1}{Centroid Decomposition}{section.9}% 53
-\BOOKMARK [2][-]{subsection.9.2}{Heavy-Light Decomposition}{section.9}% 54
-\BOOKMARK [2][-]{subsection.9.3}{LCA}{section.9}% 55
+\BOOKMARK [2][-]{subsection.1.9}{Range LEQ query}{section.1}% 10
+\BOOKMARK [2][-]{subsection.1.10}{Persistent Segment Tree}{section.1}% 11
+\BOOKMARK [1][-]{section.2}{Flow and Matching}{}% 12
+\BOOKMARK [2][-]{subsection.2.1}{Max Flow}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.2}{Bipartite Matching}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.3}{Min-cost Flow}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.4}{LP Solver}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.5}{Stable Marriage}{section.2}% 17
+\BOOKMARK [1][-]{section.3}{Geometry}{}% 18
+\BOOKMARK [2][-]{subsection.3.1}{2D Floating-point Geometry}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.2}{3D Geometry}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.3}{2D Convex Hull}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.4}{Pair of Closest Points}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.5}{Triangulation}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.6}{Delaunay Triangulation}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.7}{3D Convex Hull}{section.3}% 25
+\BOOKMARK [1][-]{section.4}{Graphs}{}% 26
+\BOOKMARK [2][-]{subsection.4.1}{Bridge Edges}{section.4}% 27
+\BOOKMARK [2][-]{subsection.4.2}{Dijkstra's}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.3}{Euler Path}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.4}{Kruskal's Algorithm}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.5}{Strongly-connected Components}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.6}{Topological Sorting}{section.4}% 32
+\BOOKMARK [1][-]{section.5}{Math}{}% 33
+\BOOKMARK [2][-]{subsection.5.1}{Floating-Point Matrix}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.2}{Finite Field Matrix}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.3}{Primes}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.4}{Formulas}{section.5}% 37
+\BOOKMARK [1][-]{section.6}{Miscellaneous}{}% 38
+\BOOKMARK [2][-]{subsection.6.1}{2-SAT}{section.6}% 39
+\BOOKMARK [2][-]{subsection.6.2}{Convex Hull Trick}{section.6}% 40
+\BOOKMARK [2][-]{subsection.6.3}{Divide and Conquer Optimization}{section.6}% 41
+\BOOKMARK [2][-]{subsection.6.4}{Fast C++ Input}{section.6}% 42
+\BOOKMARK [2][-]{subsection.6.5}{Longest Increasing Subsequence}{section.6}% 43
+\BOOKMARK [2][-]{subsection.6.6}{Java}{section.6}% 44
+\BOOKMARK [2][-]{subsection.6.7}{Other}{section.6}% 45
+\BOOKMARK [1][-]{section.7}{Strings}{}% 46
+\BOOKMARK [2][-]{subsection.7.1}{Suffix Array}{section.7}% 47
+\BOOKMARK [2][-]{subsection.7.2}{KMP Algorithm}{section.7}% 48
+\BOOKMARK [2][-]{subsection.7.3}{String Hashing}{section.7}% 49
+\BOOKMARK [2][-]{subsection.7.4}{Z-Algorithm}{section.7}% 50
+\BOOKMARK [1][-]{section.8}{Transforms}{}% 51
+\BOOKMARK [2][-]{subsection.8.1}{FFT}{section.8}% 52
+\BOOKMARK [2][-]{subsection.8.2}{NTT}{section.8}% 53
+\BOOKMARK [2][-]{subsection.8.3}{FHWT and Similar}{section.8}% 54
+\BOOKMARK [1][-]{section.9}{Trees}{}% 55
+\BOOKMARK [2][-]{subsection.9.1}{Centroid Decomposition}{section.9}% 56
+\BOOKMARK [2][-]{subsection.9.2}{Heavy-Light Decomposition}{section.9}% 57
+\BOOKMARK [2][-]{subsection.9.3}{LCA}{section.9}% 58

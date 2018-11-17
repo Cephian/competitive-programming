@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.14)  15 NOV 2018 17:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.14)  15 NOV 2018 19:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -491,10 +491,10 @@ LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <5.5> not available
 (/home/jack/comp/Competitive-Programming/Data Structures/fenwick/BIT_range.cpp
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 19.
+(Font)              size <5> substituted on input line 15.
 
 LaTeX Font Info:    Font shape `OT1/pzc/m/n' in size <10> not available
-(Font)              Font shape `OT1/pzc/mb/it' tried instead on input line 19.
+(Font)              Font shape `OT1/pzc/mb/it' tried instead on input line 15.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -503,57 +503,62 @@ LaTeX Font Info:    Font shape `OT1/pzc/m/n' in size <10> not available
 pp)
 (/home/jack/comp/Competitive-Programming/Data Structures/segment tree/classic_s
 egt.cpp) (/home/jack/comp/Competitive-Programming/Data Structures/kd_tree.cpp
-[2]) (/home/jack/comp/Competitive-Programming/Data Structures/wavelet_tree.cpp)
-[3] (/home/jack/comp/Competitive-Programming/Data Structures/BST/lazy_treap.cpp
-) (/home/jack/comp/Competitive-Programming/Flow & Matching/dinic.cpp [4])
+[2]) (/home/jack/comp/Competitive-Programming/Data Structures/wavelet_tree.cpp
+[3])
+(/home/jack/comp/Competitive-Programming/Data Structures/BST/lazy_treap.cpp)
+(/home/jack/comp/Competitive-Programming/Data Structures/range_leq.cpp [4])
+(/home/jack/comp/Competitive-Programming/Data Structures/segment tree/persisten
+t_segtree.cpp)
+(/home/jack/comp/Competitive-Programming/Flow & Matching/dinic.cpp [5])
 (/home/jack/comp/Competitive-Programming/Flow & Matching/hopcroft_karp.cpp)
-(/home/jack/comp/Competitive-Programming/Flow & Matching/min_cost_flow.cpp
-[5]) (/home/jack/comp/Competitive-Programming/Flow & Matching/simplex.cpp)
-(/home/jack/comp/Competitive-Programming/Flow & Matching/stable_marriage.cpp
-[6]) (/home/jack/comp/Competitive-Programming/Geometry/base_ld.cpp [7])
-(/home/jack/comp/Competitive-Programming/Geometry/3d.cpp [8])
+(/home/jack/comp/Competitive-Programming/Flow & Matching/min_cost_flow.cpp)
+(/home/jack/comp/Competitive-Programming/Flow & Matching/simplex.cpp [6])
+(/home/jack/comp/Competitive-Programming/Flow & Matching/stable_marriage.cpp)
+(/home/jack/comp/Competitive-Programming/Geometry/base_ld.cpp [7] [8])
+(/home/jack/comp/Competitive-Programming/Geometry/3d.cpp [9])
 (/home/jack/comp/Competitive-Programming/Geometry/convex_hull.cpp)
 (/home/jack/comp/Competitive-Programming/Geometry/closest_points.cpp)
-(/home/jack/comp/Competitive-Programming/Geometry/triangulation.cpp [9])
-(/home/jack/comp/Competitive-Programming/Geometry/delaunay.cpp)
-(/home/jack/comp/Competitive-Programming/Geometry/3dcnv.cpp [10])
+(/home/jack/comp/Competitive-Programming/Geometry/triangulation.cpp)
+(/home/jack/comp/Competitive-Programming/Geometry/delaunay.cpp [10])
+(/home/jack/comp/Competitive-Programming/Geometry/3dcnv.cpp [11])
 (/home/jack/comp/Competitive-Programming/Graphs/bridge.cpp)
-(/home/jack/comp/Competitive-Programming/Graphs/dijkstra.cpp [11])
-(/home/jack/comp/Competitive-Programming/Graphs/eulerpath.cpp)
+(/home/jack/comp/Competitive-Programming/Graphs/dijkstra.cpp)
+(/home/jack/comp/Competitive-Programming/Graphs/eulerpath.cpp [12])
 (/home/jack/comp/Competitive-Programming/Graphs/kruskal.cpp)
-(/home/jack/comp/Competitive-Programming/Graphs/scc.cpp [12])
-(/home/jack/comp/Competitive-Programming/Graphs/top_sort.cpp)
+(/home/jack/comp/Competitive-Programming/Graphs/scc.cpp)
+(/home/jack/comp/Competitive-Programming/Graphs/top_sort.cpp [13])
 (/home/jack/comp/Competitive-Programming/Math/matrix_fp.cpp)
 (/home/jack/comp/Competitive-Programming/Math/matrix_ll.cpp)
-(/home/jack/comp/Competitive-Programming/Math/primes.cpp [13])
+(/home/jack/comp/Competitive-Programming/Math/primes.cpp [14])
+(/home/jack/comp/Competitive-Programming/Math/formulas.cpp)
 (/home/jack/comp/Competitive-Programming/Miscellaneous/2sat.cpp)
 (/home/jack/comp/Competitive-Programming/Miscellaneous/convex_hull_trick.cpp)
-[14]
 (/home/jack/comp/Competitive-Programming/Miscellaneous/divide_conquer_optimizat
-ion.cpp) (/home/jack/comp/Competitive-Programming/Miscellaneous/fast_input.cpp)
+ion.cpp [15])
+(/home/jack/comp/Competitive-Programming/Miscellaneous/fast_input.cpp)
 (/home/jack/comp/Competitive-Programming/Miscellaneous/longest_incr_subseq.cpp)
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
 )
-(/home/jack/comp/Competitive-Programming/Miscellaneous/Main.java [15])
+(/home/jack/comp/Competitive-Programming/Miscellaneous/Main.java [16])
 (/home/jack/comp/Competitive-Programming/Miscellaneous/random.cpp)
 (/home/jack/comp/Competitive-Programming/Strings/suffix_array.cpp)
-(/home/jack/comp/Competitive-Programming/Strings/kmp.cpp [16])
+(/home/jack/comp/Competitive-Programming/Strings/kmp.cpp [17])
 (/home/jack/comp/Competitive-Programming/Strings/range_hash.cpp)
 (/home/jack/comp/Competitive-Programming/Strings/Z_algo.cpp)
-(/home/jack/comp/Competitive-Programming/Transforms/fft1.cpp [17])
+(/home/jack/comp/Competitive-Programming/Transforms/fft1.cpp [18])
 (/home/jack/comp/Competitive-Programming/Transforms/ntt.cpp)
 (/home/jack/comp/Competitive-Programming/Transforms/fwht.cpp)
-(/home/jack/comp/Competitive-Programming/Trees/centroid_decomposition.cpp
-[18]) (/home/jack/comp/Competitive-Programming/Trees/hld.cpp)
-(/home/jack/comp/Competitive-Programming/Trees/lca.cpp)) [19]
+(/home/jack/comp/Competitive-Programming/Trees/centroid_decomposition.cpp)
+[19] (/home/jack/comp/Competitive-Programming/Trees/hld.cpp)
+(/home/jack/comp/Competitive-Programming/Trees/lca.cpp)) [20]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 88.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 88.
  (./notebook.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
 Package rerunfilecheck Info: File `notebook.out' has not changed.
-(rerunfilecheck)             Checksum: D13C637641405724B18287637713C45E;3352.
+(rerunfilecheck)             Checksum: 6E3DB87FBFC8B4C57EA2A4853E0757F9;3549.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -562,13 +567,13 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 88.
  ) 
 Here is how much of TeX's memory you used:
- 12722 strings out of 492642
- 184798 string characters out of 6135566
- 1315213 words of memory out of 5000000
- 13322 multiletter control sequences out of 15000+600000
+ 12915 strings out of 492642
+ 188077 string characters out of 6135566
+ 1248534 words of memory out of 5000000
+ 13351 multiletter control sequences out of 15000+600000
  13316 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,13n,68p,283b,2055s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,13n,68p,283b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
@@ -579,10 +584,10 @@ ublic/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrb8
 a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/tex
 mf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texmf-dist/fonts/type1/
 urw/zapfchan/uzcmi8a.pfb>
-Output written on notebook.pdf (19 pages, 299646 bytes).
+Output written on notebook.pdf (20 pages, 306865 bytes).
 PDF statistics:
- 4030 PDF objects out of 4296 (max. 8388607)
- 3958 compressed objects within 40 object streams
- 3045 named destinations out of 3580 (max. 500000)
- 441 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4232 PDF objects out of 4296 (max. 8388607)
+ 4157 compressed objects within 42 object streams
+ 3200 named destinations out of 3580 (max. 500000)
+ 465 words of extra memory for PDF output out of 10000 (max. 10000000)
 

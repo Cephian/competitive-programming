@@ -164,6 +164,12 @@ INPUT /home/jack/comp/Competitive-Programming/Data Structures/wavelet_tree.cpp
 INPUT /home/jack/comp/Competitive-Programming/Data Structures/BST/lazy_treap.cpp
 INPUT /home/jack/comp/Competitive-Programming/Data Structures/BST/lazy_treap.cpp
 INPUT /home/jack/comp/Competitive-Programming/Data Structures/BST/lazy_treap.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/range_leq.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/range_leq.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/range_leq.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/segment tree/persistent_segtree.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/segment tree/persistent_segtree.cpp
+INPUT /home/jack/comp/Competitive-Programming/Data Structures/segment tree/persistent_segtree.cpp
 INPUT /home/jack/comp/Competitive-Programming/Flow & Matching/dinic.cpp
 INPUT /home/jack/comp/Competitive-Programming/Flow & Matching/dinic.cpp
 INPUT /home/jack/comp/Competitive-Programming/Flow & Matching/dinic.cpp
@@ -227,6 +233,9 @@ INPUT /home/jack/comp/Competitive-Programming/Math/matrix_ll.cpp
 INPUT /home/jack/comp/Competitive-Programming/Math/primes.cpp
 INPUT /home/jack/comp/Competitive-Programming/Math/primes.cpp
 INPUT /home/jack/comp/Competitive-Programming/Math/primes.cpp
+INPUT /home/jack/comp/Competitive-Programming/Math/formulas.cpp
+INPUT /home/jack/comp/Competitive-Programming/Math/formulas.cpp
+INPUT /home/jack/comp/Competitive-Programming/Math/formulas.cpp
 INPUT /home/jack/comp/Competitive-Programming/Miscellaneous/2sat.cpp
 INPUT /home/jack/comp/Competitive-Programming/Miscellaneous/2sat.cpp
 INPUT /home/jack/comp/Competitive-Programming/Miscellaneous/2sat.cpp

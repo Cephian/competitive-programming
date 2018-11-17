@@ -12,7 +12,7 @@ Data Structures/segment tree/classic_segt.cpp	Segment Tree
 Data Structures/kd_tree.cpp	KD-Tree
 Data Structures/wavelet_tree.cpp	Wavelet Tree
 Data Structures/BST/lazy_treap.cpp	Lazy Treap
-Data Structures/range_leq/range_leq.cpp	Range LEQ query
+Data Structures/range_leq.cpp	Range LEQ query
 Data Structures/segment tree/persistent_segtree.cpp	Persistent Segment Tree
 
 [Flow and Matching]
@@ -43,10 +43,12 @@ Graphs/top_sort.cpp	Topological Sorting
 Math/matrix_fp.cpp	Floating-Point Matrix
 Math/matrix_ll.cpp	Finite Field Matrix
 Math/primes.cpp	Primes
+Math/formulas.cpp	Formulas
 
 [Miscellaneous]
 Miscellaneous/2sat.cpp	2-SAT
 Miscellaneous/convex_hull_trick.cpp	Convex Hull Trick
+Miscellaneous/sliding_max.cpp	Sliding Max Window
 Miscellaneous/divide_conquer_optimization.cpp	Divide and Conquer Optimization
 Miscellaneous/fast_input.cpp	Fast C++ Input
 Miscellaneous/longest_incr_subseq.cpp	Longest Increasing Subsequence
