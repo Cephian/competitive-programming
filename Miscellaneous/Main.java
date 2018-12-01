@@ -65,7 +65,6 @@ public class Main {
 
 class Pair implements Comparable<Pair>{
 	int a, b;
-	@Override
 	public int compareTo(Pair x) {
 		if(a != x.a)
 			return Integer.compare(x);
