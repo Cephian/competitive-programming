@@ -11,6 +11,7 @@ struct segt {
 			if(l&1) t[l]=ctr,v[l++]=c;
 			if(r&1) t[--r]=ctr,v[r]=c;
 		}
+		++ctr;
 	}
 
 	//query value at i

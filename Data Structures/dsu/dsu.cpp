@@ -1,8 +1,9 @@
 struct dsu {
 	vector<int> uf;
 
-	void id(int u) {
-		return uf[u]==u?u:uf[u] = id(u);
+	int id(int u) {
+		//cout << u << " to " <<uf[u] << endl;
+		return (uf[u]==u) ? u : uf[u]=id(uf[u]);
 	}
 
 	void merge(int u, int v) {
