@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-#define print(x) cerr << #x << " = " << x << endl;
+#pragma GCC optimize("Ofast")
+#pragma GCC target ("sse,sse2,sse3,sse4,popcnt,abm,mmx,avx,tune=native")
 using namespace std;
 typedef long long ll;
 
