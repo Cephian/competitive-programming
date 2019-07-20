@@ -7,6 +7,11 @@ struct mod_int {
 		if(a > mod) x = a % mod;
 		else x = a;
 	}
+	inline mod_int(long long a) {
+		if(a < 0) a = -a;
+		if(a > mod) x = a % mod;
+		else x = a;
+	}
 	inline mod_int& operator=(int a) {
 		if(a < 0) a = -a;
 		if(a > mod) x = a % mod;
@@ -26,7 +31,8 @@ struct mod_int {
 	}
 
 	inline mod_int& operator+=(const mod_int& e) {
-		if(x += e.x >= mod)
+		x += e.x;
+		if(x >= mod)
 			x -= mod;
 		return *this;
 	}
@@ -38,7 +44,7 @@ struct mod_int {
 	}
 
 	inline mod_int operator*(const mod_int& e) {
-		return mod_int((x * (long long)e.x) % mod);
+		return mod_int(x * (long long)e.x);
 	}
 
 	inline mod_int operator*(const int a) {
@@ -48,7 +54,7 @@ struct mod_int {
 
 template <int mod>
 inline mod_int<mod> operator*(int a, mod_int<mod> m) {
-	return a * m;
+	return m * a;
 }
 
 template <int mod>
@@ -56,5 +62,11 @@ istream& operator>>(istream& i, mod_int<mod>& m) {
 	return i >> m.x;
 }
 
-typedef mod_int<1000000007> mint;
+template <int mod>
+ostream& operator<<(ostream& o, const mod_int<mod>& m) {
+	return o << m.x;
+}
+
+typedef mod_int<MOD> mint;
 ///////////////////////////////////////////
+
