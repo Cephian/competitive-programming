@@ -11,6 +11,7 @@ struct top_sort {
 	bool visit(int u) {
 		if(seen[u] == 2) return true;
 		if(seen[u] == 1) return false;
+		seen[u] = 1;
 		for(int v : G[u])
 			if(!visit(v))
 				return false;
